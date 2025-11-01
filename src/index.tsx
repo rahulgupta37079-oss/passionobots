@@ -63,42 +63,120 @@ app.get('/api/courses', (c) => {
   const courses = [
     {
       id: 1,
-      name: "Robotics Fundamentals",
+      slug: "robotics-fundamentals",
+      name: "Robotics Fundamentals Internship",
       price: "₹4,999",
-      duration: "8 weeks",
+      duration: "2 Months",
       level: "Beginner",
       image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400&h=300&fit=crop",
-      description: "Learn the basics of robotics, electronics, and programming"
+      description: "Master robotics fundamentals with hands-on projects - Internship Program",
+      shortDesc: "Learn robotics basics, electronics, and programming with real projects"
     },
     {
       id: 2,
-      name: "AI & Machine Learning",
+      slug: "ai-machine-learning",
+      name: "AI & Machine Learning Internship",
       price: "₹7,999",
-      duration: "12 weeks",
+      duration: "2 Months",
       level: "Intermediate",
       image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=300&fit=crop",
-      description: "Master AI concepts and implement ML models in robotics"
+      description: "Build AI models and deploy ML solutions - Internship Program",
+      shortDesc: "Master AI concepts and implement ML models in real applications"
     },
     {
       id: 3,
-      name: "IoT Development",
+      slug: "iot-development",
+      name: "IoT Development Internship",
       price: "₹5,999",
-      duration: "10 weeks",
+      duration: "2 Months",
       level: "Intermediate",
       image: "https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?w=400&h=300&fit=crop",
-      description: "Build connected devices and smart systems"
+      description: "Create smart IoT solutions and connected devices - Internship Program",
+      shortDesc: "Build connected devices and smart systems with IoT protocols"
     },
     {
       id: 4,
-      name: "Advanced Automation",
+      slug: "advanced-automation",
+      name: "Advanced Automation Internship",
       price: "₹9,999",
-      duration: "14 weeks",
+      duration: "2 Months",
       level: "Advanced",
-      image: "https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=400&h=300&fit=crop",
-      description: "Industrial automation and control systems"
+      image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=300&fit=crop",
+      description: "Design industrial automation systems - Internship Program",
+      shortDesc: "Industrial automation and control systems for manufacturing"
     }
   ]
   return c.json(courses)
+})
+
+app.get('/api/course/:slug', (c) => {
+  const slug = c.req.param('slug')
+  const courseDetails = {
+    'robotics-fundamentals': {
+      id: 1,
+      slug: "robotics-fundamentals",
+      name: "Robotics Fundamentals Internship",
+      tagline: "Master Robotics from Scratch with Industry Projects",
+      price: "₹4,999",
+      originalPrice: "₹9,999",
+      discount: "50% OFF",
+      duration: "2 Months",
+      level: "Beginner",
+      mode: "Online + Hands-on Projects",
+      enrolled: "2,500+ Students",
+      rating: "4.9/5",
+      image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&h=600&fit=crop",
+      description: "Comprehensive robotics internship program with hands-on projects, industry mentorship, and dual certification",
+      
+      highlights: [
+        "Build 5+ Real Robotics Projects",
+        "2 Industry-Recognized Certificates",
+        "Live Mentorship from IIT/NIT Experts",
+        "Guaranteed Placement Assistance",
+        "Premium Arduino & Raspberry Pi Kit",
+        "Lifetime Course Access & Updates"
+      ],
+      
+      certificates: [
+        { name: "Robotics Fundamentals Completion Certificate", issuer: "PassionBots Academy" },
+        { name: "Project Internship Certificate", issuer: "PassionBots & Partner Companies" }
+      ],
+      
+      curriculum: "8 Weeks - Detailed curriculum available",
+      
+      instructor: {
+        name: "Dr. Rajesh Kumar",
+        designation: "Senior Robotics Engineer",
+        experience: "12+ years in Robotics & Automation",
+        image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop",
+        credentials: [
+          "PhD in Robotics from IIT Delhi",
+          "Ex-Amazon Robotics Team Lead",
+          "Published 15+ Research Papers",
+          "Mentored 2000+ Students"
+        ]
+      },
+      
+      companies: [
+        "Amazon Robotics", "ABB Robotics", "KUKA", "Fanuc", "Boston Dynamics", "Tesla"
+      ],
+      
+      whyChoose: [
+        { icon: "fa-tools", title: "Premium Kits", desc: "Industry-standard Arduino & Raspberry Pi kits included" },
+        { icon: "fa-users", title: "Expert Mentors", desc: "Learn from IIT/NIT alumni working at top companies" },
+        { icon: "fa-certificate", title: "Dual Certification", desc: "Get 2 certificates valued by 200+ companies" },
+        { icon: "fa-project-diagram", title: "Real Projects", desc: "Build 5+ portfolio-worthy robotics projects" },
+        { icon: "fa-briefcase", title: "Job Guarantee", desc: "95% placement rate with partner companies" },
+        { icon: "fa-infinity", title: "Lifetime Access", desc: "All materials, recordings & updates forever" }
+      ]
+    }
+  }
+  
+  const course = courseDetails[slug]
+  if (course) {
+    return c.json(course)
+  }
+  return c.json({ error: "Course not found" }, 404)
 })
 
 app.post('/api/contact', async (c) => {
@@ -840,5 +918,9 @@ app.get('/contact', (c) => c.redirect('/static/pages/contact.html'))
 app.get('/login', (c) => c.redirect('/static/pages/login.html'))
 app.get('/testimonials', (c) => c.redirect('/static/pages/testimonials.html'))
 app.get('/why-choose', (c) => c.redirect('/static/pages/why-choose.html'))
+app.get('/course/robotics-fundamentals', (c) => c.redirect('/static/pages/course-robotics.html'))
+app.get('/course/ai-machine-learning', (c) => c.redirect('/courses'))
+app.get('/course/iot-development', (c) => c.redirect('/courses'))
+app.get('/course/advanced-automation', (c) => c.redirect('/courses'))
 
 export default app

@@ -534,6 +534,39 @@ html {
     font-size: 12px;
 }
 
+/* Course Dropdown Menu */
+.course-menu-dropdown {
+    position: relative;
+}
+
+.course-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 0.5rem;
+    min-width: 18rem;
+    background: #1f2937;
+    border-radius: 0.5rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    border: 2px solid #374151;
+    z-index: 1000;
+}
+
+.course-menu-dropdown:hover .course-dropdown {
+    display: block;
+}
+
+.course-dropdown a {
+    display: block;
+    padding: 0.75rem 1rem;
+    transition: all 0.2s ease;
+}
+
+.course-dropdown a:hover {
+    background: #374151;
+}
+
 /* Why Choose Cards */
 .why-choose-card {
     background: #1f2937;
