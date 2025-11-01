@@ -345,9 +345,78 @@ function animateCounters() {
     stats.forEach(stat => observer.observe(stat));
 }
 
+// Load WhatsApp testimonials
+async function loadWhatsAppTestimonials() {
+    const container = document.getElementById('whatsapp-testimonials');
+    if (!container) return;
+    
+    try {
+        const response = await axios.get('/api/whatsapp-testimonials');
+        const testimonials = response.data;
+        
+        container.innerHTML = testimonials.map((chat, index) => `
+            <div class="whatsapp-chat" style="animation-delay: ${index * 0.1}s">
+                <div class="whatsapp-header">
+                    <img src="${chat.avatar}" alt="${chat.name}" class="whatsapp-avatar">
+                    <div class="flex-1">
+                        <h4 class="font-bold text-white">${chat.name}</h4>
+                        <p class="text-xs text-green-500 flex items-center gap-1">
+                            <i class="fas fa-circle" style="font-size: 6px;"></i>
+                            Online
+                        </p>
+                    </div>
+                    <span class="text-xs text-gray-400">${chat.time}</span>
+                </div>
+                <div class="whatsapp-body">
+                    ${chat.messages.map((message, msgIndex) => `
+                        <div class="whatsapp-message" style="animation-delay: ${(index * 0.1) + (msgIndex * 0.05)}s">
+                            <p class="text-white">${message}</p>
+                            <div class="whatsapp-time">
+                                ${chat.time} <span class="whatsapp-checkmarks">✓✓</span>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+        `).join('');
+        
+    } catch (error) {
+        console.error('Error loading WhatsApp testimonials:', error);
+    }
+}
+
+// Load Why Choose reasons
+async function loadWhyChoose() {
+    const container = document.getElementById('why-choose-grid');
+    if (!container) return;
+    
+    try {
+        const response = await axios.get('/api/why-choose');
+        const reasons = response.data;
+        
+        container.innerHTML = reasons.map((reason, index) => `
+            <div class="why-choose-card" style="animation-delay: ${index * 0.05}s">
+                <div class="why-choose-icon">
+                    <i class="fas ${reason.icon} text-primary text-2xl"></i>
+                </div>
+                <h3 class="font-orbitron font-bold text-lg mb-2 text-white">${reason.title}</h3>
+                <p class="text-gray-400 text-sm leading-relaxed mb-3">${reason.description}</p>
+                <span class="why-choose-stats">
+                    <i class="fas fa-check-circle mr-1"></i>${reason.stats}
+                </span>
+            </div>
+        `).join('');
+        
+    } catch (error) {
+        console.error('Error loading Why Choose reasons:', error);
+    }
+}
+
 // Initialize home page features
 if (window.location.pathname === '/') {
     document.addEventListener('DOMContentLoaded', () => {
+        loadWhyChoose();
+        loadWhatsAppTestimonials();
         loadTestimonials();
         loadFeaturedCourses();
         initFAQ();

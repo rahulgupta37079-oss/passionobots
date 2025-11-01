@@ -212,6 +212,167 @@ app.get('/api/stats', (c) => {
   return c.json(stats)
 })
 
+app.get('/api/whatsapp-testimonials', (c) => {
+  const whatsappTestimonials = [
+    {
+      id: 1,
+      name: "Rohit Sharma",
+      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop",
+      time: "10:30 AM",
+      messages: [
+        "Just completed the Robotics Fundamentals course! 🤖",
+        "The hands-on approach was amazing",
+        "Built my first autonomous robot in just 8 weeks",
+        "Instructor support was incredible 👍"
+      ],
+      typing: false
+    },
+    {
+      id: 2,
+      name: "Anjali Gupta",
+      avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop",
+      time: "11:15 AM",
+      messages: [
+        "Best decision ever! 💯",
+        "Got placed at a top tech company",
+        "The AI & ML course gave me exactly what the industry needed",
+        "Salary increased by 60% 🚀"
+      ],
+      typing: false
+    },
+    {
+      id: 3,
+      name: "Vikram Reddy",
+      avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop",
+      time: "2:45 PM",
+      messages: [
+        "Thank you PassionBots! 🙏",
+        "The IoT kit quality is top-notch",
+        "Delivery was super fast",
+        "Already working on my second project"
+      ],
+      typing: false
+    },
+    {
+      id: 4,
+      name: "Meera Patel",
+      avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&h=100&fit=crop",
+      time: "4:20 PM",
+      messages: [
+        "Started my own robotics startup after the course! 💼",
+        "The mentorship was invaluable",
+        "Now we have 5 clients already",
+        "PassionBots changed my life ❤️"
+      ],
+      typing: false
+    },
+    {
+      id: 5,
+      name: "Aditya Singh",
+      avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&h=100&fit=crop",
+      time: "5:30 PM",
+      messages: [
+        "Won first prize in national robotics competition! 🏆",
+        "All thanks to the drone kit and guidance",
+        "The instructors are industry experts",
+        "Highly recommended to everyone"
+      ],
+      typing: false
+    }
+  ]
+  return c.json(whatsappTestimonials)
+})
+
+app.get('/api/why-choose', (c) => {
+  const reasons = [
+    {
+      id: 1,
+      icon: "fa-graduation-cap",
+      title: "Industry Expert Instructors",
+      description: "Learn from professionals with 10+ years of experience in robotics and AI",
+      stats: "50+ Expert Mentors"
+    },
+    {
+      id: 2,
+      icon: "fa-hands-helping",
+      title: "Hands-On Learning",
+      description: "Build real projects, not just theory. Every course includes practical assignments",
+      stats: "100% Practical Focus"
+    },
+    {
+      id: 3,
+      icon: "fa-certificate",
+      title: "Industry-Recognized Certificates",
+      description: "Get certificates valued by top companies like TCS, Infosys, and startups",
+      stats: "Accepted by 200+ Companies"
+    },
+    {
+      id: 4,
+      icon: "fa-briefcase",
+      title: "Guaranteed Placement Support",
+      description: "Dedicated placement cell with resume building, mock interviews, and job referrals",
+      stats: "95% Placement Rate"
+    },
+    {
+      id: 5,
+      icon: "fa-box",
+      title: "Premium Quality Kits",
+      description: "Original Arduino, Raspberry Pi, and authentic components. No cheap duplicates",
+      stats: "100% Authentic Parts"
+    },
+    {
+      id: 6,
+      icon: "fa-clock",
+      title: "Lifetime Access",
+      description: "Access all course materials, recordings, and updates forever. No expiry",
+      stats: "Never Expires"
+    },
+    {
+      id: 7,
+      icon: "fa-users",
+      title: "Strong Community",
+      description: "Join 5000+ learners. Network, collaborate, and grow together",
+      stats: "5000+ Active Members"
+    },
+    {
+      id: 8,
+      icon: "fa-headset",
+      title: "24/7 Support",
+      description: "Stuck at 2 AM? No problem. Our support team is always available",
+      stats: "Round-the-clock Help"
+    },
+    {
+      id: 9,
+      icon: "fa-rupee-sign",
+      title: "Affordable Pricing",
+      description: "Quality education at student-friendly prices. EMI options available",
+      stats: "Starting at ₹2,499"
+    },
+    {
+      id: 10,
+      icon: "fa-trophy",
+      title: "Competition Ready",
+      description: "Train for hackathons and robotics competitions. Our students win regularly",
+      stats: "100+ Competition Winners"
+    },
+    {
+      id: 11,
+      icon: "fa-sync",
+      title: "Regular Updates",
+      description: "Curriculum updated quarterly to match industry trends and new technologies",
+      stats: "Updated Every 3 Months"
+    },
+    {
+      id: 12,
+      icon: "fa-star",
+      title: "4.9/5 Rating",
+      description: "Consistently high ratings from 5000+ verified students across India",
+      stats: "5000+ Reviews"
+    }
+  ]
+  return c.json(reasons)
+})
+
 // Home page
 app.get('/', (c) => {
   return c.html(`
@@ -357,6 +518,44 @@ app.get('/', (c) => {
                         <h3 class="text-2xl font-orbitron font-bold mb-4">Custom Solutions</h3>
                         <p class="text-gray-400">Tailored automation projects for businesses and educational institutions</p>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose PassionBots -->
+        <section class="py-20 bg-dark">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-orbitron font-bold mb-4">
+                        Why Choose <span class="text-primary">PassionBots</span>?
+                    </h2>
+                    <p class="text-gray-400 text-lg max-w-3xl mx-auto">
+                        We're not just another robotics education platform. Here's what makes us stand out from the rest.
+                    </p>
+                </div>
+                
+                <div id="why-choose-grid" class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                    <!-- Reasons loaded dynamically -->
+                </div>
+            </div>
+        </section>
+
+        <!-- WhatsApp Testimonials -->
+        <section class="py-20 bg-gray-900">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-orbitron font-bold mb-4">
+                        What Students Are <span class="text-primary">Saying</span>
+                    </h2>
+                    <p class="text-gray-400 text-lg">Real messages from real students</p>
+                    <div class="flex items-center justify-center gap-2 mt-4">
+                        <i class="fab fa-whatsapp text-green-500 text-3xl"></i>
+                        <span class="text-gray-400">Live from our WhatsApp community</span>
+                    </div>
+                </div>
+                
+                <div id="whatsapp-testimonials" class="max-w-4xl mx-auto space-y-6">
+                    <!-- WhatsApp chats loaded dynamically -->
                 </div>
             </div>
         </section>
@@ -640,5 +839,6 @@ app.get('/gallery', (c) => c.redirect('/static/pages/gallery.html'))
 app.get('/contact', (c) => c.redirect('/static/pages/contact.html'))
 app.get('/login', (c) => c.redirect('/static/pages/login.html'))
 app.get('/testimonials', (c) => c.redirect('/static/pages/testimonials.html'))
+app.get('/why-choose', (c) => c.redirect('/static/pages/why-choose.html'))
 
 export default app

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why Choose PassionBots - Best Robotics & AI Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="/static/css/styles.css" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#FFD300',
+              dark: '#000000',
+            }
+          },
+          fontFamily: {
+            'poppins': ['Poppins', 'sans-serif'],
+            'orbitron': ['Orbitron', 'sans-serif'],
+          }
+        }
+      }
+    </script>
+</head>
+<body class="bg-dark text-white font-poppins">
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-black bg-opacity-95">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+                        <i class="fas fa-robot text-dark text-xl"></i>
+                    </div>
+                    <span class="text-2xl font-orbitron font-bold">Passion<span class="text-primary">Bots</span></span>
+                </div>
+                
+                <div class="hidden md:flex space-x-6">
+                    <a href="/" class="hover:text-primary transition">Home</a>
+                    <a href="/about" class="hover:text-primary transition">About</a>
+                    <a href="/products" class="hover:text-primary transition">Products</a>
+                    <a href="/courses" class="hover:text-primary transition">Courses</a>
+                    <a href="/testimonials" class="hover:text-primary transition">Reviews</a>
+                    <a href="/contact" class="hover:text-primary transition">Contact</a>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <a href="/login" class="hidden md:block bg-primary text-dark px-6 py-2 rounded-full font-semibold hover:bg-yellow-400 transition">Login</a>
+                    <button id="mobile-menu-btn" class="md:hidden text-primary">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
+                <div class="flex flex-col space-y-4">
+                    <a href="/" class="hover:text-primary transition">Home</a>
+                    <a href="/about" class="hover:text-primary transition">About</a>
+                    <a href="/products" class="hover:text-primary transition">Products</a>
+                    <a href="/courses" class="hover:text-primary transition">Courses</a>
+                    <a href="/testimonials" class="hover:text-primary transition">Reviews</a>
+                    <a href="/contact" class="hover:text-primary transition">Contact</a>
+                    <a href="/login" class="bg-primary text-dark px-6 py-2 rounded-full font-semibold text-center">Login</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-[60vh] flex items-center justify-center pt-24 pb-12">
+        <div class="absolute inset-0 bg-gradient-to-br from-dark via-gray-900 to-dark">
+            <div class="absolute inset-0 opacity-20">
+                <div class="grid-pattern"></div>
+            </div>
+        </div>
+        
+        <div class="container mx-auto px-4 z-10 text-center">
+            <h1 class="text-4xl md:text-6xl font-orbitron font-bold mb-6">
+                Why Choose <span class="text-primary">PassionBots</span>?
+            </h1>
+            <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+                India's most trusted robotics and AI education platform with 5000+ successful students
+            </p>
+            <div class="flex flex-wrap justify-center gap-6 mt-8">
+                <div class="bg-gray-900 rounded-xl px-6 py-4 border-2 border-primary">
+                    <div class="text-3xl font-orbitron font-bold text-primary">4.9/5</div>
+                    <div class="text-gray-400 text-sm">Student Rating</div>
+                </div>
+                <div class="bg-gray-900 rounded-xl px-6 py-4 border-2 border-primary">
+                    <div class="text-3xl font-orbitron font-bold text-primary">5000+</div>
+                    <div class="text-gray-400 text-sm">Students Trained</div>
+                </div>
+                <div class="bg-gray-900 rounded-xl px-6 py-4 border-2 border-primary">
+                    <div class="text-3xl font-orbitron font-bold text-primary">95%</div>
+                    <div class="text-gray-400 text-sm">Placement Rate</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Reasons Grid -->
+    <section class="py-20">
+        <div class="container mx-auto px-4">
+            <div id="all-reasons-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- All reasons loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Section -->
+    <section class="py-20 bg-gray-900">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl md:text-5xl font-orbitron font-bold mb-4">
+                    PassionBots vs <span class="text-primary">Others</span>
+                </h2>
+                <p class="text-gray-400 text-lg">See what makes us different</p>
+            </div>
+            
+            <div class="max-w-5xl mx-auto overflow-x-auto">
+                <table class="w-full bg-dark rounded-2xl overflow-hidden border-2 border-gray-800">
+                    <thead>
+                        <tr class="bg-gray-900">
+                            <th class="p-4 text-left font-orbitron">Features</th>
+                            <th class="p-4 text-center bg-primary text-dark font-orbitron">PassionBots</th>
+                            <th class="p-4 text-center font-orbitron">Others</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-800">
+                        <tr>
+                            <td class="p-4">Industry Expert Instructors</td>
+                            <td class="p-4 text-center text-green-500"><i class="fas fa-check-circle text-2xl"></i></td>
+                            <td class="p-4 text-center text-gray-600"><i class="fas fa-times-circle text-2xl"></i></td>
+                        </tr>
+                        <tr class="bg-gray-900">
+                            <td class="p-4">Hands-On Projects</td>
+                            <td class="p-4 text-center text-green-500"><i class="fas fa-check-circle text-2xl"></i></td>
+                            <td class="p-4 text-center text-yellow-500"><i class="fas fa-minus-circle text-2xl"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="p-4">Premium Quality Kits</td>
+                            <td class="p-4 text-center text-green-500"><i class="fas fa-check-circle text-2xl"></i></td>
+                            <td class="p-4 text-center text-gray-600"><i class="fas fa-times-circle text-2xl"></i></td>
+                        </tr>
+                        <tr class="bg-gray-900">
+                            <td class="p-4">Lifetime Access</td>
+                            <td class="p-4 text-center text-green-500"><i class="fas fa-check-circle text-2xl"></i></td>
+                            <td class="p-4 text-center text-gray-600"><i class="fas fa-times-circle text-2xl"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="p-4">24/7 Support</td>
+                            <td class="p-4 text-center text-green-500"><i class="fas fa-check-circle text-2xl"></i></td>
+                            <td class="p-4 text-center text-yellow-500"><i class="fas fa-minus-circle text-2xl"></i></td>
+                        </tr>
+                        <tr class="bg-gray-900">
+                            <td class="p-4">Placement Assistance</td>
+                            <td class="p-4 text-center text-green-500"><i class="fas fa-check-circle text-2xl"></i></td>
+                            <td class="p-4 text-center text-gray-600"><i class="fas fa-times-circle text-2xl"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="p-4">Regular Updates</td>
+                            <td class="p-4 text-center text-green-500"><i class="fas fa-check-circle text-2xl"></i></td>
+                            <td class="p-4 text-center text-gray-600"><i class="fas fa-times-circle text-2xl"></i></td>
+                        </tr>
+                        <tr class="bg-gray-900">
+                            <td class="p-4">Industry Certificates</td>
+                            <td class="p-4 text-center text-green-500"><i class="fas fa-check-circle text-2xl"></i></td>
+                            <td class="p-4 text-center text-yellow-500"><i class="fas fa-minus-circle text-2xl"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="/courses" class="inline-block bg-primary text-dark px-8 py-4 rounded-full font-semibold text-lg hover:bg-yellow-400 transition transform hover:scale-105">
+                    Start Learning Today <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Stories CTA -->
+    <section class="py-20 bg-primary">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl md:text-5xl font-orbitron font-bold text-dark mb-6">
+                Join 5000+ Successful Students
+            </h2>
+            <p class="text-dark text-lg mb-8 max-w-2xl mx-auto">
+                Don't just take our word for it. See what our students have achieved
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="/testimonials" class="bg-dark text-primary px-8 py-4 rounded-full font-semibold hover:bg-gray-900 transition">
+                    <i class="fas fa-star mr-2"></i>Read Success Stories
+                </a>
+                <a href="/login" class="bg-white text-dark px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition">
+                    <i class="fas fa-rocket mr-2"></i>Get Started Now
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-12 border-t-2 border-gray-900">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+                            <i class="fas fa-robot text-dark text-xl"></i>
+                        </div>
+                        <span class="text-2xl font-orbitron font-bold">Passion<span class="text-primary">Bots</span></span>
+                    </div>
+                    <p class="text-gray-400">Innovating the future with robotics and AI education</p>
+                </div>
+                
+                <div>
+                    <h4 class="font-orbitron font-bold mb-4">Quick Links</h4>
+                    <div class="flex flex-col space-y-2">
+                        <a href="/about" class="text-gray-400 hover:text-primary transition">About Us</a>
+                        <a href="/products" class="text-gray-400 hover:text-primary transition">Products</a>
+                        <a href="/courses" class="text-gray-400 hover:text-primary transition">Courses</a>
+                        <a href="/gallery" class="text-gray-400 hover:text-primary transition">Gallery</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-orbitron font-bold mb-4">Contact</h4>
+                    <div class="flex flex-col space-y-2 text-gray-400">
+                        <p><i class="fas fa-envelope text-primary mr-2"></i>info@passionbots.in</p>
+                        <p><i class="fas fa-phone text-primary mr-2"></i>+91 XXX XXX XXXX</p>
+                        <p><i class="fas fa-map-marker-alt text-primary mr-2"></i>India</p>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-orbitron font-bold mb-4">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-primary bg-opacity-20 rounded-full flex items-center justify-center hover:bg-primary hover:text-dark transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-primary bg-opacity-20 rounded-full flex items-center justify-center hover:bg-primary hover:text-dark transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-primary bg-opacity-20 rounded-full flex items-center justify-center hover:bg-primary hover:text-dark transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-primary bg-opacity-20 rounded-full flex items-center justify-center hover:bg-primary hover:text-dark transition">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-900 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 PassionBots. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Chat Button -->
+    <div class="fixed bottom-8 right-8 z-50">
+        <button class="w-16 h-16 bg-primary rounded-full shadow-lg flex items-center justify-center hover:bg-yellow-400 transition transform hover:scale-110 animate-pulse-slow">
+            <i class="fas fa-comment-dots text-dark text-2xl"></i>
+        </button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.0/dist/axios.min.js"></script>
+    <script src="/static/js/main.js"></script>
+    <script>
+        // Load all reasons
+        async function loadAllReasons() {
+            const container = document.getElementById('all-reasons-grid');
+            
+            try {
+                const response = await axios.get('/api/why-choose');
+                const reasons = response.data;
+                
+                container.innerHTML = reasons.map((reason, index) => `
+                    <div class="why-choose-card" style="animation-delay: ${index * 0.05}s">
+                        <div class="why-choose-icon">
+                            <i class="fas ${reason.icon} text-primary text-2xl"></i>
+                        </div>
+                        <h3 class="font-orbitron font-bold text-xl mb-3 text-white">${reason.title}</h3>
+                        <p class="text-gray-400 leading-relaxed mb-4">${reason.description}</p>
+                        <span class="why-choose-stats">
+                            <i class="fas fa-check-circle mr-1"></i>${reason.stats}
+                        </span>
+                    </div>
+                `).join('');
+                
+            } catch (error) {
+                console.error('Error loading reasons:', error);
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', loadAllReasons);
+    </script>
+</body>
+</html>
