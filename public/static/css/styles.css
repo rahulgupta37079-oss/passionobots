@@ -407,3 +407,54 @@ html {
     background: #FFD300;
     color: #000;
 }
+
+/* Testimonial Cards */
+.testimonial-card {
+    transition: all 0.3s ease;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(255, 211, 0, 0.2);
+}
+
+/* FAQ Items */
+.faq-item {
+    transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+    border-color: #FFD300;
+}
+
+.faq-question i {
+    transition: transform 0.3s ease;
+}
+
+.faq-answer {
+    transition: max-height 0.3s ease;
+}
+
+/* Partner Logos */
+.partner-logo {
+    transition: all 0.3s ease;
+}
+
+.partner-logo:hover {
+    transform: scale(1.05);
+}
+
+/* Stats Animation */
+[data-stat] {
+    transition: opacity 0.5s ease;
+}
+
+/* Testimonial Stars */
+.testimonial-card .fa-star {
+    font-size: 14px;
+}
+
+/* Featured Course Badge positioning */
+.course-card .badge {
+    backdrop-filter: blur(10px);
+}

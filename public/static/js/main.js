@@ -218,6 +218,143 @@ function checkAuth() {
 // Initialize auth check
 checkAuth();
 
+// Load testimonials on home page
+async function loadTestimonials() {
+    const container = document.getElementById('testimonials-container');
+    if (!container) return;
+    
+    try {
+        const response = await axios.get('/api/testimonials');
+        const testimonials = response.data.slice(0, 3); // Show first 3
+        
+        container.innerHTML = testimonials.map(testimonial => `
+            <div class="testimonial-card bg-gray-900 p-8 rounded-2xl border-2 border-gray-800 hover:border-primary transition">
+                <div class="flex items-center mb-4">
+                    <img src="${testimonial.image}" alt="${testimonial.name}" class="w-16 h-16 rounded-full border-4 border-primary mr-4">
+                    <div>
+                        <h4 class="font-bold text-lg">${testimonial.name}</h4>
+                        <p class="text-gray-400 text-sm">${testimonial.role}</p>
+                        <p class="text-primary text-xs">${testimonial.college}</p>
+                    </div>
+                </div>
+                <div class="flex mb-4">
+                    ${'<i class="fas fa-star text-primary"></i>'.repeat(testimonial.rating)}
+                </div>
+                <p class="text-gray-400 italic mb-4">"${testimonial.text}"</p>
+                <div class="text-sm text-gray-500">
+                    <i class="fas fa-graduation-cap mr-1"></i>${testimonial.course}
+                </div>
+            </div>
+        `).join('');
+        
+    } catch (error) {
+        console.error('Error loading testimonials:', error);
+    }
+}
+
+// Load featured courses on home page
+async function loadFeaturedCourses() {
+    const container = document.getElementById('featured-courses');
+    if (!container) return;
+    
+    try {
+        const response = await axios.get('/api/courses');
+        const courses = response.data.slice(0, 3); // Show first 3
+        
+        container.innerHTML = courses.map(course => `
+            <div class="course-card rounded-2xl overflow-hidden">
+                <div class="relative h-48 overflow-hidden">
+                    <img src="${course.image}" alt="${course.name}" class="w-full h-full object-cover">
+                    <div class="absolute top-4 right-4">
+                        <span class="badge badge-${course.level.toLowerCase()}">${course.level}</span>
+                    </div>
+                </div>
+                <div class="p-6 bg-dark border-2 border-gray-800">
+                    <h3 class="text-xl font-orbitron font-bold mb-2">${course.name}</h3>
+                    <p class="text-gray-400 text-sm mb-4">${course.description}</p>
+                    <div class="flex items-center gap-4 mb-4 text-sm text-gray-400">
+                        <span><i class="fas fa-clock text-primary mr-1"></i>${course.duration}</span>
+                        <span><i class="fas fa-signal text-primary mr-1"></i>${course.level}</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-2xl font-bold text-primary">${course.price}</span>
+                        <a href="/courses" class="bg-primary text-dark px-4 py-2 rounded-full font-semibold hover:bg-yellow-400 transition text-sm">
+                            Enroll Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+        
+    } catch (error) {
+        console.error('Error loading featured courses:', error);
+    }
+}
+
+// FAQ accordion functionality
+function initFAQ() {
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', () => {
+            const faqItem = question.parentElement;
+            const answer = faqItem.querySelector('.faq-answer');
+            const icon = question.querySelector('i');
+            
+            // Close all other FAQs
+            document.querySelectorAll('.faq-item').forEach(item => {
+                if (item !== faqItem) {
+                    item.querySelector('.faq-answer').classList.add('hidden');
+                    item.querySelector('.faq-question i').style.transform = 'rotate(0deg)';
+                }
+            });
+            
+            // Toggle current FAQ
+            answer.classList.toggle('hidden');
+            if (answer.classList.contains('hidden')) {
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                icon.style.transform = 'rotate(180deg)';
+            }
+        });
+    });
+}
+
+// Counter animation for stats
+function animateCounters() {
+    const stats = document.querySelectorAll('[data-stat]');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const element = entry.target;
+                const finalValue = element.textContent;
+                
+                // Simple animation - just show the value
+                element.style.opacity = '0';
+                setTimeout(() => {
+                    element.style.transition = 'opacity 0.5s ease';
+                    element.style.opacity = '1';
+                }, 100);
+                
+                observer.unobserve(element);
+            }
+        });
+    }, { threshold: 0.5 });
+    
+    stats.forEach(stat => observer.observe(stat));
+}
+
+// Initialize home page features
+if (window.location.pathname === '/') {
+    document.addEventListener('DOMContentLoaded', () => {
+        loadTestimonials();
+        loadFeaturedCourses();
+        initFAQ();
+        animateCounters();
+    });
+}
+
 // Print console message
 console.log('%c🤖 PassionBots Website', 'font-size: 20px; font-weight: bold; color: #FFD300;');
 console.log('%cInnovating the Future with Robotics & AI', 'font-size: 14px; color: #888;');
