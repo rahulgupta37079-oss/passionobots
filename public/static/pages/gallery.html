@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - PassionBots</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="/static/css/styles.css" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#FFD300',
+              dark: '#000000',
+            }
+          },
+          fontFamily: {
+            'poppins': ['Poppins', 'sans-serif'],
+            'orbitron': ['Orbitron', 'sans-serif'],
+          }
+        }
+      }
+    </script>
+</head>
+<body class="bg-dark text-white font-poppins">
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-black bg-opacity-95">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+                        <i class="fas fa-robot text-dark text-xl"></i>
+                    </div>
+                    <span class="text-2xl font-orbitron font-bold">Passion<span class="text-primary">Bots</span></span>
+                </div>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="/" class="hover:text-primary transition">Home</a>
+                    <a href="/about" class="hover:text-primary transition">About</a>
+                    <a href="/products" class="hover:text-primary transition">Products</a>
+                    <a href="/courses" class="hover:text-primary transition">Courses</a>
+                    <a href="/gallery" class="text-primary">Gallery</a>
+                    <a href="/contact" class="hover:text-primary transition">Contact</a>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <a href="/login" class="hidden md:block bg-primary text-dark px-6 py-2 rounded-full font-semibold hover:bg-yellow-400 transition">Login</a>
+                    <button id="mobile-menu-btn" class="md:hidden text-primary">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
+                <div class="flex flex-col space-y-4">
+                    <a href="/" class="hover:text-primary transition">Home</a>
+                    <a href="/about" class="hover:text-primary transition">About</a>
+                    <a href="/products" class="hover:text-primary transition">Products</a>
+                    <a href="/courses" class="hover:text-primary transition">Courses</a>
+                    <a href="/gallery" class="text-primary">Gallery</a>
+                    <a href="/contact" class="hover:text-primary transition">Contact</a>
+                    <a href="/login" class="bg-primary text-dark px-6 py-2 rounded-full font-semibold text-center">Login</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-[50vh] flex items-center justify-center pt-24 pb-12">
+        <div class="absolute inset-0 bg-gradient-to-br from-dark via-gray-900 to-dark">
+            <div class="absolute inset-0 opacity-20">
+                <div class="grid-pattern"></div>
+            </div>
+        </div>
+        
+        <div class="container mx-auto px-4 z-10 text-center">
+            <h1 class="text-4xl md:text-6xl font-orbitron font-bold mb-6">
+                Our <span class="text-primary">Gallery</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
+                Explore our workshops, student projects, and robotics innovations
+            </p>
+        </div>
+    </section>
+
+    <!-- Gallery Grid -->
+    <section class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="gallery-grid">
+                <div class="gallery-item border-2 border-gray-800">
+                    <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=600&h=400&fit=crop" alt="Workshop">
+                </div>
+                <div class="gallery-item border-2 border-gray-800">
+                    <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=600&h=400&fit=crop" alt="Student Project">
+                </div>
+                <div class="gallery-item border-2 border-gray-800">
+                    <img src="https://images.unsplash.com/photo-1563770660941-20978e870e26?w=600&h=400&fit=crop" alt="Robotics Lab">
+                </div>
+                <div class="gallery-item border-2 border-gray-800">
+                    <img src="https://images.unsplash.com/photo-1581092918484-8313e1f7e6c2?w=600&h=400&fit=crop" alt="Robot Assembly">
+                </div>
+                <div class="gallery-item border-2 border-gray-800">
+                    <img src="https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?w=600&h=400&fit=crop" alt="Electronics Workshop">
+                </div>
+                <div class="gallery-item border-2 border-gray-800">
+                    <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=600&h=400&fit=crop" alt="3D Printing">
+                </div>
+                <div class="gallery-item border-2 border-gray-800">
+                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&h=400&fit=crop" alt="AI Lab">
+                </div>
+                <div class="gallery-item border-2 border-gray-800">
+                    <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=600&h=400&fit=crop" alt="Training Session">
+                </div>
+                <div class="gallery-item border-2 border-gray-800">
+                    <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=600&h=400&fit=crop" alt="Drone Project">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-12 border-t-2 border-gray-900">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+                            <i class="fas fa-robot text-dark text-xl"></i>
+                        </div>
+                        <span class="text-2xl font-orbitron font-bold">Passion<span class="text-primary">Bots</span></span>
+                    </div>
+                    <p class="text-gray-400">Innovating the future with robotics and AI education</p>
+                </div>
+                
+                <div>
+                    <h4 class="font-orbitron font-bold mb-4">Quick Links</h4>
+                    <div class="flex flex-col space-y-2">
+                        <a href="/about" class="text-gray-400 hover:text-primary transition">About Us</a>
+                        <a href="/products" class="text-gray-400 hover:text-primary transition">Products</a>
+                        <a href="/courses" class="text-gray-400 hover:text-primary transition">Courses</a>
+                        <a href="/gallery" class="text-gray-400 hover:text-primary transition">Gallery</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-orbitron font-bold mb-4">Contact</h4>
+                    <div class="flex flex-col space-y-2 text-gray-400">
+                        <p><i class="fas fa-envelope text-primary mr-2"></i>info@passionbots.in</p>
+                        <p><i class="fas fa-phone text-primary mr-2"></i>+91 XXX XXX XXXX</p>
+                        <p><i class="fas fa-map-marker-alt text-primary mr-2"></i>India</p>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-orbitron font-bold mb-4">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-primary bg-opacity-20 rounded-full flex items-center justify-center hover:bg-primary hover:text-dark transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-primary bg-opacity-20 rounded-full flex items-center justify-center hover:bg-primary hover:text-dark transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-primary bg-opacity-20 rounded-full flex items-center justify-center hover:bg-primary hover:text-dark transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-primary bg-opacity-20 rounded-full flex items-center justify-center hover:bg-primary hover:text-dark transition">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-900 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 PassionBots. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Chat Button -->
+    <div class="fixed bottom-8 right-8 z-50">
+        <button class="w-16 h-16 bg-primary rounded-full shadow-lg flex items-center justify-center hover:bg-yellow-400 transition transform hover:scale-110 animate-pulse-slow">
+            <i class="fas fa-comment-dots text-dark text-2xl"></i>
+        </button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.0/dist/axios.min.js"></script>
+    <script src="/static/js/main.js"></script>
+</body>
+</html>

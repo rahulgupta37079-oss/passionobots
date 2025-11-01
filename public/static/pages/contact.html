@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - PassionBots</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="/static/css/styles.css" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#FFD300',
+              dark: '#000000',
+            }
+          },
+          fontFamily: {
+            'poppins': ['Poppins', 'sans-serif'],
+            'orbitron': ['Orbitron', 'sans-serif'],
+          }
+        }
+      }
+    </script>
+</head>
+<body class="bg-dark text-white font-poppins">
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-black bg-opacity-95">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+                        <i class="fas fa-robot text-dark text-xl"></i>
+                    </div>
+                    <span class="text-2xl font-orbitron font-bold">Passion<span class="text-primary">Bots</span></span>
+                </div>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="/" class="hover:text-primary transition">Home</a>
+                    <a href="/about" class="hover:text-primary transition">About</a>
+                    <a href="/products" class="hover:text-primary transition">Products</a>
+                    <a href="/courses" class="hover:text-primary transition">Courses</a>
+                    <a href="/gallery" class="hover:text-primary transition">Gallery</a>
+                    <a href="/contact" class="text-primary">Contact</a>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <a href="/login" class="hidden md:block bg-primary text-dark px-6 py-2 rounded-full font-semibold hover:bg-yellow-400 transition">Login</a>
+                    <button id="mobile-menu-btn" class="md:hidden text-primary">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
+                <div class="flex flex-col space-y-4">
+                    <a href="/" class="hover:text-primary transition">Home</a>
+                    <a href="/about" class="hover:text-primary transition">About</a>
+                    <a href="/products" class="hover:text-primary transition">Products</a>
+                    <a href="/courses" class="hover:text-primary transition">Courses</a>
+                    <a href="/gallery" class="hover:text-primary transition">Gallery</a>
+                    <a href="/contact" class="text-primary">Contact</a>
+                    <a href="/login" class="bg-primary text-dark px-6 py-2 rounded-full font-semibold text-center">Login</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-[40vh] flex items-center justify-center pt-24 pb-12">
+        <div class="absolute inset-0 bg-gradient-to-br from-dark via-gray-900 to-dark">
+            <div class="absolute inset-0 opacity-20">
+                <div class="grid-pattern"></div>
+            </div>
+        </div>
+        
+        <div class="container mx-auto px-4 z-10 text-center">
+            <h1 class="text-4xl md:text-6xl font-orbitron font-bold mb-6">
+                Contact <span class="text-primary">Us</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
+                Get in touch with us for inquiries, support, or collaborations
+            </p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Contact Form -->
+                <div>
+                    <h2 class="text-3xl font-orbitron font-bold mb-6">Send us a Message</h2>
+                    <form id="contact-form" class="space-y-6">
+                        <div>
+                            <label class="block mb-2 text-gray-400">Full Name</label>
+                            <input type="text" name="name" class="form-input" placeholder="Your Name" required>
+                        </div>
+                        <div>
+                            <label class="block mb-2 text-gray-400">Email Address</label>
+                            <input type="email" name="email" class="form-input" placeholder="your@email.com" required>
+                        </div>
+                        <div>
+                            <label class="block mb-2 text-gray-400">Phone Number</label>
+                            <input type="tel" name="phone" class="form-input" placeholder="+91 XXXXX XXXXX">
+                        </div>
+                        <div>
+                            <label class="block mb-2 text-gray-400">Subject</label>
+                            <input type="text" name="subject" class="form-input" placeholder="How can we help?" required>
+                        </div>
+                        <div>
+                            <label class="block mb-2 text-gray-400">Message</label>
+                            <textarea name="message" class="form-input" placeholder="Your message here..." required></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-primary text-dark py-4 rounded-full font-semibold text-lg hover:bg-yellow-400 transition">
+                            <i class="fas fa-paper-plane mr-2"></i>Send Message
+                        </button>
+                    </form>
+                </div>
+                
+                <!-- Contact Info -->
+                <div>
+                    <h2 class="text-3xl font-orbitron font-bold mb-6">Get in Touch</h2>
+                    <div class="space-y-6">
+                        <div class="bg-gray-900 rounded-2xl p-6 border-2 border-gray-800">
+                            <div class="w-12 h-12 bg-primary bg-opacity-20 rounded-full flex items-center justify-center mb-4">
+                                <i class="fas fa-envelope text-primary text-xl"></i>
+                            </div>
+                            <h3 class="font-bold text-lg mb-2">Email Us</h3>
+                            <p class="text-gray-400">info@passionbots.in</p>
+                            <p class="text-gray-400">support@passionbots.in</p>
+                        </div>
+                        
+                        <div class="bg-gray-900 rounded-2xl p-6 border-2 border-gray-800">
+                            <div class="w-12 h-12 bg-primary bg-opacity-20 rounded-full flex items-center justify-center mb-4">
+                                <i class="fas fa-phone text-primary text-xl"></i>
+                            </div>
+                            <h3 class="font-bold text-lg mb-2">Call Us</h3>
+                            <p class="text-gray-400">+91 XXX XXX XXXX</p>
+                            <p class="text-gray-400">Mon - Sat: 9 AM - 6 PM</p>
+                        </div>
+                        
+                        <div class="bg-gray-900 rounded-2xl p-6 border-2 border-gray-800">
+                            <div class="w-12 h-12 bg-primary bg-opacity-20 rounded-full flex items-center justify-center mb-4">
+                                <i class="fas fa-map-marker-alt text-primary text-xl"></i>
+                            </div>
+                            <h3 class="font-bold text-lg mb-2">Visit Us</h3>
+                            <p class="text-gray-400">PassionBots Innovation Center<br>India</p>
+                        </div>
+                        
+                        <div class="bg-gray-900 rounded-2xl p-6 border-2 border-gray-800">
+                            <h3 class="font-bold text-lg mb-4">Follow Us</h3>
+                            <div class="flex space-x-4">
+                                <a href="#" class="w-12 h-12 bg-primary bg-opacity-20 rounded-full flex items-center justify-center hover:bg-primary hover:text-dark transition">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="#" class="w-12 h-12 bg-primary bg-opacity-20 rounded-full flex items-center justify-center hover:bg-primary hover:text-dark transition">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#" class="w-12 h-12 bg-primary bg-opacity-20 rounded-full flex items-center justify-center hover:bg-primary hover:text-dark transition">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" class="w-12 h-12 bg-primary bg-opacity-20 rounded-full flex items-center justify-center hover:bg-primary hover:text-dark transition">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section (Placeholder) -->
+    <section class="py-20 bg-gray-900">
+        <div class="container mx-auto px-4">
+            <div class="bg-gray-800 rounded-2xl h-96 flex items-center justify-center">
+                <div class="text-center">
+                    <i class="fas fa-map-marked-alt text-6xl text-primary mb-4"></i>
+                    <p class="text-gray-400 text-lg">Map integration coming soon</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-12 border-t-2 border-gray-900">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+                            <i class="fas fa-robot text-dark text-xl"></i>
+                        </div>
+                        <span class="text-2xl font-orbitron font-bold">Passion<span class="text-primary">Bots</span></span>
+                    </div>
+                    <p class="text-gray-400">Innovating the future with robotics and AI education</p>
+                </div>
+                
+                <div>
+                    <h4 class="font-orbitron font-bold mb-4">Quick Links</h4>
+                    <div class="flex flex-col space-y-2">
+                        <a href="/about" class="text-gray-400 hover:text-primary transition">About Us</a>
+                        <a href="/products" class="text-gray-400 hover:text-primary transition">Products</a>
+                        <a href="/courses" class="text-gray-400 hover:text-primary transition">Courses</a>
+                        <a href="/gallery" class="text-gray-400 hover:text-primary transition">Gallery</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-orbitron font-bold mb-4">Contact</h4>
+                    <div class="flex flex-col space-y-2 text-gray-400">
+                        <p><i class="fas fa-envelope text-primary mr-2"></i>info@passionbots.in</p>
+                        <p><i class="fas fa-phone text-primary mr-2"></i>+91 XXX XXX XXXX</p>
+                        <p><i class="fas fa-map-marker-alt text-primary mr-2"></i>India</p>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-orbitron font-bold mb-4">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-primary bg-opacity-20 rounded-full flex items-center justify-center hover:bg-primary hover:text-dark transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-primary bg-opacity-20 rounded-full flex items-center justify-center hover:bg-primary hover:text-dark transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-primary bg-opacity-20 rounded-full flex items-center justify-center hover:bg-primary hover:text-dark transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-primary bg-opacity-20 rounded-full flex items-center justify-center hover:bg-primary hover:text-dark transition">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-900 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 PassionBots. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Chat Button -->
+    <div class="fixed bottom-8 right-8 z-50">
+        <button class="w-16 h-16 bg-primary rounded-full shadow-lg flex items-center justify-center hover:bg-yellow-400 transition transform hover:scale-110 animate-pulse-slow">
+            <i class="fas fa-comment-dots text-dark text-2xl"></i>
+        </button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.0/dist/axios.min.js"></script>
+    <script src="/static/js/main.js"></script>
+    <script src="/static/js/contact.js"></script>
+</body>
+</html>

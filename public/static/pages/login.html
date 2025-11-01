@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - PassionBots</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="/static/css/styles.css" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#FFD300',
+              dark: '#000000',
+            }
+          },
+          fontFamily: {
+            'poppins': ['Poppins', 'sans-serif'],
+            'orbitron': ['Orbitron', 'sans-serif'],
+          }
+        }
+      }
+    </script>
+</head>
+<body class="bg-dark text-white font-poppins">
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-black bg-opacity-95">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <a href="/" class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+                        <i class="fas fa-robot text-dark text-xl"></i>
+                    </div>
+                    <span class="text-2xl font-orbitron font-bold">Passion<span class="text-primary">Bots</span></span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Login/Signup Section -->
+    <section class="min-h-screen flex items-center justify-center pt-20 pb-12 px-4">
+        <div class="absolute inset-0 bg-gradient-to-br from-dark via-gray-900 to-dark">
+            <div class="absolute inset-0 opacity-20">
+                <div class="grid-pattern"></div>
+            </div>
+        </div>
+        
+        <div class="container mx-auto max-w-md z-10">
+            <!-- Login Form -->
+            <div id="login-form-container" class="bg-white rounded-2xl p-8 shadow-2xl">
+                <div class="text-center mb-8">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-robot text-dark text-3xl"></i>
+                    </div>
+                    <h2 class="text-3xl font-orbitron font-bold text-dark mb-2">Welcome Back</h2>
+                    <p class="text-gray-600">Login to your PassionBots account</p>
+                </div>
+                
+                <form id="login-form" class="space-y-6">
+                    <div>
+                        <label class="block mb-2 text-gray-700 font-medium">Email Address</label>
+                        <input type="email" name="email" class="w-full px-4 py-3 rounded-lg bg-gray-100 border-2 border-gray-200 focus:border-primary focus:bg-white transition text-dark" placeholder="your@email.com" required>
+                    </div>
+                    <div>
+                        <label class="block mb-2 text-gray-700 font-medium">Password</label>
+                        <input type="password" name="password" class="w-full px-4 py-3 rounded-lg bg-gray-100 border-2 border-gray-200 focus:border-primary focus:bg-white transition text-dark" placeholder="••••••••" required>
+                    </div>
+                    <div class="flex items-center justify-between text-sm">
+                        <label class="flex items-center text-gray-600">
+                            <input type="checkbox" class="mr-2">
+                            Remember me
+                        </label>
+                        <a href="#" class="text-primary hover:text-yellow-600">Forgot password?</a>
+                    </div>
+                    <button type="submit" class="w-full bg-primary text-dark py-4 rounded-full font-bold text-lg hover:bg-yellow-400 transition shadow-lg">
+                        Login
+                    </button>
+                </form>
+                
+                <div class="mt-6">
+                    <div class="relative">
+                        <div class="absolute inset-0 flex items-center">
+                            <div class="w-full border-t border-gray-300"></div>
+                        </div>
+                        <div class="relative flex justify-center text-sm">
+                            <span class="px-2 bg-white text-gray-500">Or continue with</span>
+                        </div>
+                    </div>
+                    
+                    <button class="mt-4 w-full flex items-center justify-center gap-3 bg-white border-2 border-gray-200 text-gray-700 py-3 rounded-full font-semibold hover:bg-gray-50 transition">
+                        <i class="fab fa-google text-red-500"></i>
+                        Sign in with Google
+                    </button>
+                </div>
+                
+                <p class="mt-6 text-center text-gray-600">
+                    Don't have an account? 
+                    <button onclick="showSignup()" class="text-primary font-semibold hover:text-yellow-600">Sign up</button>
+                </p>
+            </div>
+            
+            <!-- Signup Form -->
+            <div id="signup-form-container" class="bg-white rounded-2xl p-8 shadow-2xl hidden">
+                <div class="text-center mb-8">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-robot text-dark text-3xl"></i>
+                    </div>
+                    <h2 class="text-3xl font-orbitron font-bold text-dark mb-2">Create Account</h2>
+                    <p class="text-gray-600">Join PassionBots today</p>
+                </div>
+                
+                <form id="signup-form" class="space-y-6">
+                    <div>
+                        <label class="block mb-2 text-gray-700 font-medium">Full Name</label>
+                        <input type="text" name="name" class="w-full px-4 py-3 rounded-lg bg-gray-100 border-2 border-gray-200 focus:border-primary focus:bg-white transition text-dark" placeholder="Your Name" required>
+                    </div>
+                    <div>
+                        <label class="block mb-2 text-gray-700 font-medium">Email Address</label>
+                        <input type="email" name="email" class="w-full px-4 py-3 rounded-lg bg-gray-100 border-2 border-gray-200 focus:border-primary focus:bg-white transition text-dark" placeholder="your@email.com" required>
+                    </div>
+                    <div>
+                        <label class="block mb-2 text-gray-700 font-medium">Password</label>
+                        <input type="password" name="password" class="w-full px-4 py-3 rounded-lg bg-gray-100 border-2 border-gray-200 focus:border-primary focus:bg-white transition text-dark" placeholder="••••••••" required minlength="6">
+                    </div>
+                    <div>
+                        <label class="block mb-2 text-gray-700 font-medium">Confirm Password</label>
+                        <input type="password" name="confirmPassword" class="w-full px-4 py-3 rounded-lg bg-gray-100 border-2 border-gray-200 focus:border-primary focus:bg-white transition text-dark" placeholder="••••••••" required minlength="6">
+                    </div>
+                    <div class="flex items-start">
+                        <input type="checkbox" class="mt-1 mr-2" required>
+                        <label class="text-sm text-gray-600">
+                            I agree to the <a href="#" class="text-primary hover:text-yellow-600">Terms & Conditions</a> and <a href="#" class="text-primary hover:text-yellow-600">Privacy Policy</a>
+                        </label>
+                    </div>
+                    <button type="submit" class="w-full bg-primary text-dark py-4 rounded-full font-bold text-lg hover:bg-yellow-400 transition shadow-lg">
+                        Create Account
+                    </button>
+                </form>
+                
+                <div class="mt-6">
+                    <div class="relative">
+                        <div class="absolute inset-0 flex items-center">
+                            <div class="w-full border-t border-gray-300"></div>
+                        </div>
+                        <div class="relative flex justify-center text-sm">
+                            <span class="px-2 bg-white text-gray-500">Or sign up with</span>
+                        </div>
+                    </div>
+                    
+                    <button class="mt-4 w-full flex items-center justify-center gap-3 bg-white border-2 border-gray-200 text-gray-700 py-3 rounded-full font-semibold hover:bg-gray-50 transition">
+                        <i class="fab fa-google text-red-500"></i>
+                        Sign up with Google
+                    </button>
+                </div>
+                
+                <p class="mt-6 text-center text-gray-600">
+                    Already have an account? 
+                    <button onclick="showLogin()" class="text-primary font-semibold hover:text-yellow-600">Login</button>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.0/dist/axios.min.js"></script>
+    <script src="/static/js/main.js"></script>
+    <script src="/static/js/auth.js"></script>
+</body>
+</html>
