@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI & Machine Learning Internship | PassionBots</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="/static/css/styles.css" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#FFD300',
+              dark: '#000000',
+            }
+          },
+          fontFamily: {
+            'poppins': ['Poppins', 'sans-serif'],
+            'orbitron': ['Orbitron', 'sans-serif'],
+          }
+        }
+      }
+    </script>
+</head>
+<body class="bg-dark text-white font-poppins">
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-black bg-opacity-95">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+                        <i class="fas fa-robot text-dark text-xl"></i>
+                    </div>
+                    <a href="/" class="text-2xl font-orbitron font-bold">Passion<span class="text-primary">Bots</span></a>
+                </div>
+                
+                <div class="hidden md:flex space-x-6">
+                    <a href="/" class="hover:text-primary transition">Home</a>
+                    <a href="/about" class="hover:text-primary transition">About</a>
+                    <div class="relative course-menu-dropdown">
+                        <button class="hover:text-primary transition flex items-center gap-1">
+                            Courses <i class="fas fa-chevron-down text-sm"></i>
+                        </button>
+                        <div class="absolute top-full left-0 mt-2 w-72 bg-gray-900 rounded-lg shadow-2xl border-2 border-gray-800 hidden course-dropdown">
+                            <div class="p-4 space-y-2">
+                                <a href="/course/robotics-fundamentals" class="block p-3 hover:bg-gray-800 rounded-lg transition">
+                                    <div class="font-bold text-white">Robotics Fundamentals</div>
+                                    <div class="text-xs text-gray-400">Beginner • 2 Months • ₹4,999</div>
+                                </a>
+                                <a href="/course/ai-machine-learning" class="block p-3 bg-gray-800 rounded-lg">
+                                    <div class="font-bold text-primary">AI & Machine Learning</div>
+                                    <div class="text-xs text-gray-400">Intermediate • 2 Months • ₹7,999</div>
+                                </a>
+                                <a href="/course/iot-development" class="block p-3 hover:bg-gray-800 rounded-lg transition">
+                                    <div class="font-bold text-white">IoT Development</div>
+                                    <div class="text-xs text-gray-400">Intermediate • 2 Months • ₹5,999</div>
+                                </a>
+                                <a href="/course/advanced-automation" class="block p-3 hover:bg-gray-800 rounded-lg transition">
+                                    <div class="font-bold text-white">Advanced Automation</div>
+                                    <div class="text-xs text-gray-400">Advanced • 2 Months • ₹9,999</div>
+                                </a>
+                                <a href="/courses" class="block p-3 bg-primary text-dark hover:bg-yellow-400 rounded-lg transition text-center font-bold mt-2">
+                                    View All Courses →
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="/products" class="hover:text-primary transition">Products</a>
+                    <a href="/testimonials" class="hover:text-primary transition">Reviews</a>
+                    <a href="/contact" class="hover:text-primary transition">Contact</a>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <a href="/login" class="hidden md:block bg-primary text-dark px-6 py-2 rounded-full font-semibold hover:bg-yellow-400 transition">Enroll Now</a>
+                    <button id="mobile-menu-btn" class="md:hidden text-primary">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Course Hero -->
+    <section class="pt-32 pb-16 bg-gradient-to-br from-dark via-gray-900 to-dark">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="inline-block bg-primary bg-opacity-20 text-primary px-4 py-2 rounded-full text-sm font-bold mb-4">
+                        🔥 Limited Time Offer - Enroll Today!
+                    </div>
+                    <h1 class="text-4xl md:text-5xl font-orbitron font-bold mb-4">
+                        AI & Machine Learning <span class="text-primary">Internship</span>
+                    </h1>
+                    <p class="text-xl text-gray-300 mb-6">
+                        Build AI Models & Deploy ML Solutions with Industry Mentorship
+                    </p>
+                    
+                    <div class="flex flex-wrap gap-4 mb-6">
+                        <div class="flex items-center gap-2 bg-gray-900 px-4 py-2 rounded-lg">
+                            <i class="fas fa-clock text-primary"></i>
+                            <span>2 Months</span>
+                        </div>
+                        <div class="flex items-center gap-2 bg-gray-900 px-4 py-2 rounded-lg">
+                            <i class="fas fa-signal text-primary"></i>
+                            <span>Intermediate</span>
+                        </div>
+                        <div class="flex items-center gap-2 bg-gray-900 px-4 py-2 rounded-lg">
+                            <i class="fas fa-users text-primary"></i>
+                            <span>3,200+ Enrolled</span>
+                        </div>
+                        <div class="flex items-center gap-2 bg-gray-900 px-4 py-2 rounded-lg">
+                            <i class="fas fa-star text-primary"></i>
+                            <span>4.9/5 Rating</span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="text-4xl font-bold text-primary">₹7,999</div>
+                        <div class="text-2xl text-gray-500 line-through">₹15,999</div>
+                        <div class="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-bold">50% OFF</div>
+                    </div>
+                    
+                    <div class="flex gap-4">
+                        <a href="/login" class="bg-primary text-dark px-8 py-4 rounded-full font-bold text-lg hover:bg-yellow-400 transition flex items-center gap-2">
+                            <i class="fas fa-rocket"></i> Enroll Now
+                        </a>
+                        <a href="#curriculum" class="border-2 border-primary text-primary px-8 py-4 rounded-full font-bold text-lg hover:bg-primary hover:text-dark transition">
+                            View Curriculum
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=400&fit=crop" alt="AI ML Course" class="rounded-2xl border-4 border-primary shadow-2xl">
+                    <div class="absolute -bottom-6 -right-6 bg-primary text-dark p-6 rounded-2xl shadow-xl">
+                        <div class="text-3xl font-bold">3,200+</div>
+                        <div class="text-sm font-semibold">Students Enrolled</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Contact -->
+    <section class="bg-primary py-4">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap justify-center items-center gap-6 text-dark font-semibold">
+                <div class="flex items-center gap-2">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:sales@passionbots.in">sales@passionbots.in</a>
+                </div>
+                <div class="w-px h-6 bg-dark"></div>
+                <div class="flex items-center gap-2">
+                    <i class="fas fa-phone"></i>
+                    <a href="tel:+919137361474">+91 9137361474</a>
+                </div>
+                <div class="w-px h-6 bg-dark"></div>
+                <div class="flex items-center gap-2">
+                    <i class="fab fa-whatsapp"></i>
+                    <a href="https://wa.me/919137361474">WhatsApp Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Highlights -->
+    <section class="py-20 bg-gray-900">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-orbitron font-bold text-center mb-12">
+                Program <span class="text-primary">Highlights</span>
+            </h2>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-dark p-6 rounded-xl border-2 border-gray-800 hover:border-primary transition">
+                    <div class="w-12 h-12 bg-primary bg-opacity-20 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-brain text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-2">Build 10+ AI Projects</h3>
+                    <p class="text-gray-400">Image recognition, NLP, chatbots, recommendation systems</p>
+                </div>
+                
+                <div class="bg-dark p-6 rounded-xl border-2 border-gray-800 hover:border-primary transition">
+                    <div class="w-12 h-12 bg-primary bg-opacity-20 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-certificate text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-2">2 Industry Certificates</h3>
+                    <p class="text-gray-400">AI/ML Completion + Internship certificates</p>
+                </div>
+                
+                <div class="bg-dark p-6 rounded-xl border-2 border-gray-800 hover:border-primary transition">
+                    <div class="w-12 h-12 bg-primary bg-opacity-20 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-code text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-2">Python & TensorFlow</h3>
+                    <p class="text-gray-400">Industry-standard tools & frameworks</p>
+                </div>
+                
+                <div class="bg-dark p-6 rounded-xl border-2 border-gray-800 hover:border-primary transition">
+                    <div class="w-12 h-12 bg-primary bg-opacity-20 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-briefcase text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-2">Job Guarantee</h3>
+                    <p class="text-gray-400">97% placement in AI/ML roles</p>
+                </div>
+                
+                <div class="bg-dark p-6 rounded-xl border-2 border-gray-800 hover:border-primary transition">
+                    <div class="w-12 h-12 bg-primary bg-opacity-20 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-server text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-2">Cloud Platform Access</h3>
+                    <p class="text-gray-400">AWS, Google Cloud credits included</p>
+                </div>
+                
+                <div class="bg-dark p-6 rounded-xl border-2 border-gray-800 hover:border-primary transition">
+                    <div class="w-12 h-12 bg-primary bg-opacity-20 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fas fa-infinity text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-2">Lifetime Access</h3>
+                    <p class="text-gray-400">All materials, code, datasets forever</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificates -->
+    <section class="py-20 bg-dark">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-orbitron font-bold text-center mb-12">
+                Get <span class="text-primary">2 Certificates</span>
+            </h2>
+            
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <div class="bg-gradient-to-br from-gray-900 to-gray-800 p-8 rounded-2xl border-2 border-primary">
+                    <div class="text-6xl mb-4">🎓</div>
+                    <h3 class="font-orbitron font-bold text-2xl mb-2">AI/ML Completion Certificate</h3>
+                    <p class="text-gray-400 mb-4">Recognized by Google, Amazon, Microsoft hiring teams</p>
+                    <div class="text-primary font-bold">Issued by PassionBots Academy</div>
+                </div>
+                
+                <div class="bg-gradient-to-br from-gray-900 to-gray-800 p-8 rounded-2xl border-2 border-primary">
+                    <div class="text-6xl mb-4">💼</div>
+                    <h3 class="font-orbitron font-bold text-2xl mb-2">Project Internship Certificate</h3>
+                    <p class="text-gray-400 mb-4">Proves AI/ML project deployment experience</p>
+                    <div class="text-primary font-bold">Valued by 300+ Tech Companies</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Companies -->
+    <section class="py-20 bg-gray-900">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-orbitron font-bold text-center mb-4">
+                Our Students Work At
+            </h2>
+            <p class="text-center text-gray-400 mb-12">Top AI/ML companies hire from PassionBots</p>
+            
+            <div class="grid grid-cols-2 md:grid-cols-6 gap-8 items-center">
+                <div class="text-center text-3xl font-bold text-gray-600">Google</div>
+                <div class="text-center text-3xl font-bold text-gray-600">Amazon</div>
+                <div class="text-center text-3xl font-bold text-gray-600">Microsoft</div>
+                <div class="text-center text-3xl font-bold text-gray-600">IBM</div>
+                <div class="text-center text-3xl font-bold text-gray-600">NVIDIA</div>
+                <div class="text-center text-3xl font-bold text-gray-600">OpenAI</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-20 bg-dark">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-orbitron font-bold text-center mb-12">
+                Frequently Asked <span class="text-primary">Questions</span>
+            </h2>
+            
+            <div class="max-w-3xl mx-auto space-y-4">
+                <div class="faq-item bg-gray-900 rounded-2xl border-2 border-gray-800 overflow-hidden">
+                    <button class="faq-question w-full text-left p-6 flex justify-between items-center hover:bg-gray-800 transition">
+                        <span class="font-semibold text-lg">Do I need coding experience?</span>
+                        <i class="fas fa-chevron-down text-primary transition-transform"></i>
+                    </button>
+                    <div class="faq-answer hidden p-6 pt-0 text-gray-400">
+                        Basic Python knowledge is recommended. We provide a crash course in Week 1 for beginners.
+                    </div>
+                </div>
+                
+                <div class="faq-item bg-gray-900 rounded-2xl border-2 border-gray-800 overflow-hidden">
+                    <button class="faq-question w-full text-left p-6 flex justify-between items-center hover:bg-gray-800 transition">
+                        <span class="font-semibold text-lg">What tools will I learn?</span>
+                        <i class="fas fa-chevron-down text-primary transition-transform"></i>
+                    </button>
+                    <div class="faq-answer hidden p-6 pt-0 text-gray-400">
+                        Python, TensorFlow, PyTorch, Scikit-learn, Pandas, NumPy, Jupyter, AWS/GCP for deployment.
+                    </div>
+                </div>
+                
+                <div class="faq-item bg-gray-900 rounded-2xl border-2 border-gray-800 overflow-hidden">
+                    <button class="faq-question w-full text-left p-6 flex justify-between items-center hover:bg-gray-800 transition">
+                        <span class="font-semibold text-lg">Is there placement support?</span>
+                        <i class="fas fa-chevron-down text-primary transition-transform"></i>
+                    </button>
+                    <div class="faq-answer hidden p-6 pt-0 text-gray-400">
+                        Yes! We have 300+ hiring partners including Google, Amazon, and Microsoft. 97% placement rate.
+                    </div>
+                </div>
+                
+                <div class="faq-item bg-gray-900 rounded-2xl border-2 border-gray-800 overflow-hidden">
+                    <button class="faq-question w-full text-left p-6 flex justify-between items-center hover:bg-gray-800 transition">
+                        <span class="font-semibold text-lg">What projects will I build?</span>
+                        <i class="fas fa-chevron-down text-primary transition-transform"></i>
+                    </button>
+                    <div class="faq-answer hidden p-6 pt-0 text-gray-400">
+                        10+ projects including: Image classifier, chatbot, recommendation system, sentiment analyzer, face recognition, and more.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-20 bg-primary">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl font-orbitron font-bold text-dark mb-6">
+                Ready to Become an AI Engineer?
+            </h2>
+            <p class="text-dark text-lg mb-8">Join 3,200+ students building the future with AI!</p>
+            <a href="/login" class="inline-block bg-dark text-primary px-10 py-5 rounded-full font-bold text-xl hover:bg-gray-900 transition">
+                Enroll Now - ₹7,999 Only!
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-12 border-t-2 border-gray-900">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+                            <i class="fas fa-robot text-dark text-xl"></i>
+                        </div>
+                        <span class="text-2xl font-orbitron font-bold">Passion<span class="text-primary">Bots</span></span>
+                    </div>
+                    <p class="text-gray-400">Innovating the future with robotics and AI education</p>
+                </div>
+                
+                <div>
+                    <h4 class="font-orbitron font-bold mb-4">Quick Links</h4>
+                    <div class="flex flex-col space-y-2">
+                        <a href="/about" class="text-gray-400 hover:text-primary transition">About Us</a>
+                        <a href="/courses" class="text-gray-400 hover:text-primary transition">All Courses</a>
+                        <a href="/testimonials" class="text-gray-400 hover:text-primary transition">Reviews</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-orbitron font-bold mb-4">Contact</h4>
+                    <div class="flex flex-col space-y-2 text-gray-400">
+                        <p><i class="fas fa-envelope text-primary mr-2"></i>sales@passionbots.in</p>
+                        <p><i class="fas fa-phone text-primary mr-2"></i>+91 9137361474</p>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-orbitron font-bold mb-4">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-primary bg-opacity-20 rounded-full flex items-center justify-center hover:bg-primary hover:text-dark transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-primary bg-opacity-20 rounded-full flex items-center justify-center hover:bg-primary hover:text-dark transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-primary bg-opacity-20 rounded-full flex items-center justify-center hover:bg-primary hover:text-dark transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-900 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 PassionBots. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.0/dist/axios.min.js"></script>
+    <script src="/static/js/main.js"></script>
+    <script>
+        const courseMenuDropdown = document.querySelector('.course-menu-dropdown');
+        const courseDropdown = document.querySelector('.course-dropdown');
+        if (courseMenuDropdown && courseDropdown) {
+            courseMenuDropdown.addEventListener('mouseenter', () => courseDropdown.classList.remove('hidden'));
+            courseMenuDropdown.addEventListener('mouseleave', () => courseDropdown.classList.add('hidden'));
+        }
+    </script>
+</body>
+</html>

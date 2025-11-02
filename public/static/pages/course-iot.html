@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IoT Development Internship - PassionBots</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="/static/css/styles.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FFD300',
+                        dark: '#0a0a0a',
+                        'dark-secondary': '#1a1a1a'
+                    },
+                    fontFamily: {
+                        'orbitron': ['Orbitron', 'sans-serif'],
+                        'rajdhani': ['Rajdhani', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-dark text-white font-rajdhani">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-dark/95 backdrop-blur-sm border-b border-gray-800 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center gap-3">
+                    <i class="fas fa-robot text-primary text-3xl"></i>
+                    <span class="font-orbitron text-2xl font-bold">Passion<span class="text-primary">Bots</span></span>
+                </div>
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="/" class="nav-link">Home</a>
+                    <a href="/static/pages/about.html" class="nav-link">About</a>
+                    <div class="course-menu-dropdown relative">
+                        <a href="/static/pages/courses.html" class="nav-link">Courses <i class="fas fa-chevron-down text-xs ml-1"></i></a>
+                        <div class="course-dropdown">
+                            <a href="/course/robotics-fundamentals" class="block px-4 py-3 hover:bg-gray-700 border-b border-gray-700">
+                                <div class="font-semibold text-primary">Robotics Fundamentals</div>
+                                <div class="text-sm text-gray-400">Beginner • 2 Months • ₹4,999</div>
+                            </a>
+                            <a href="/course/ai-machine-learning" class="block px-4 py-3 hover:bg-gray-700 border-b border-gray-700">
+                                <div class="font-semibold text-primary">AI & Machine Learning</div>
+                                <div class="text-sm text-gray-400">Intermediate • 2 Months • ₹7,999</div>
+                            </a>
+                            <a href="/course/iot-development" class="block px-4 py-3 hover:bg-gray-700 border-b border-gray-700">
+                                <div class="font-semibold text-primary">IoT Development</div>
+                                <div class="text-sm text-gray-400">Intermediate • 2 Months • ₹5,999</div>
+                            </a>
+                            <a href="/course/advanced-automation" class="block px-4 py-3 hover:bg-gray-700">
+                                <div class="font-semibold text-primary">Advanced Automation</div>
+                                <div class="text-sm text-gray-400">Advanced • 2 Months • ₹9,999</div>
+                            </a>
+                        </div>
+                    </div>
+                    <a href="/static/pages/gallery.html" class="nav-link">Gallery</a>
+                    <a href="/static/pages/contact.html" class="nav-link">Contact</a>
+                    <a href="/static/pages/login.html" class="btn-primary">Login</a>
+                </div>
+                <button class="md:hidden text-white">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-16 bg-gradient-to-br from-dark via-gray-900 to-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center gap-2 mb-4">
+                <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm">INTERMEDIATE LEVEL</span>
+                <span class="px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-sm">2 MONTHS DURATION</span>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-orbitron font-bold mb-6">
+                IoT Development <span class="text-primary">Internship</span>
+            </h1>
+            <p class="text-xl text-gray-300 mb-8 max-w-3xl">
+                Master the Internet of Things with hands-on projects in smart home systems, industrial IoT, and cloud-connected devices. Build real-world IoT solutions using ESP32, Arduino, and industry-standard protocols.
+            </p>
+            <div class="flex flex-wrap items-center gap-6 mb-8">
+                <div class="flex items-center gap-4">
+                    <div class="text-4xl font-bold text-primary">₹5,999</div>
+                    <div class="text-2xl text-gray-400 line-through">₹11,999</div>
+                    <div class="bg-green-500 text-white px-3 py-1 rounded-full font-bold">50% OFF</div>
+                </div>
+            </div>
+            <div class="flex flex-wrap gap-6 mb-8">
+                <div class="flex items-center gap-2">
+                    <i class="fas fa-users text-primary text-xl"></i>
+                    <span class="text-gray-300">2,800+ Students Enrolled</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <i class="fas fa-star text-yellow-400 text-xl"></i>
+                    <span class="text-gray-300">4.8/5 Rating (520+ Reviews)</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <i class="fas fa-clock text-primary text-xl"></i>
+                    <span class="text-gray-300">2 Months • 8 Weeks</span>
+                </div>
+            </div>
+            <div class="flex flex-wrap gap-4">
+                <a href="#enroll" class="btn-primary text-lg px-8 py-4">
+                    <i class="fas fa-rocket mr-2"></i>Enroll Now
+                </a>
+                <a href="#curriculum" class="bg-white/10 hover:bg-white/20 text-white px-8 py-4 rounded-lg font-semibold transition-all">
+                    <i class="fas fa-book mr-2"></i>View Curriculum
+                </a>
+                <a href="https://wa.me/919137361474?text=I'm interested in IoT Development Internship" target="_blank" class="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold transition-all">
+                    <i class="fab fa-whatsapp mr-2"></i>WhatsApp Us
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Contact Bar -->
+    <section class="bg-primary py-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-wrap justify-center items-center gap-6 md:gap-12 text-dark font-semibold">
+                <a href="mailto:sales@passionbots.in" class="flex items-center gap-2 hover:underline">
+                    <i class="fas fa-envelope"></i>
+                    <span>sales@passionbots.in</span>
+                </a>
+                <a href="tel:+919137361474" class="flex items-center gap-2 hover:underline">
+                    <i class="fas fa-phone"></i>
+                    <span>+91 9137361474</span>
+                </a>
+                <a href="https://wa.me/919137361474" target="_blank" class="flex items-center gap-2 hover:underline">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>WhatsApp for Instant Support</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Program Highlights -->
+    <section class="py-16 bg-dark-secondary">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-orbitron font-bold text-center mb-12">
+                Program <span class="text-primary">Highlights</span>
+            </h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-dark p-6 rounded-xl border-2 border-gray-800 hover:border-primary transition-all">
+                    <i class="fas fa-wifi text-primary text-3xl mb-4"></i>
+                    <h3 class="text-xl font-bold mb-3">Build 15+ IoT Projects</h3>
+                    <p class="text-gray-400">Smart home automation, weather stations, industrial monitoring, asset tracking, and connected devices</p>
+                </div>
+                <div class="bg-dark p-6 rounded-xl border-2 border-gray-800 hover:border-primary transition-all">
+                    <i class="fas fa-microchip text-primary text-3xl mb-4"></i>
+                    <h3 class="text-xl font-bold mb-3">ESP32 & Arduino Boards</h3>
+                    <p class="text-gray-400">Master industry-standard IoT hardware platforms with WiFi, Bluetooth, and sensor integration</p>
+                </div>
+                <div class="bg-dark p-6 rounded-xl border-2 border-gray-800 hover:border-primary transition-all">
+                    <i class="fas fa-cloud text-primary text-3xl mb-4"></i>
+                    <h3 class="text-xl font-bold mb-3">Cloud IoT Platforms</h3>
+                    <p class="text-gray-400">AWS IoT Core, Google Cloud IoT, Azure IoT Hub, ThingSpeak integration</p>
+                </div>
+                <div class="bg-dark p-6 rounded-xl border-2 border-gray-800 hover:border-primary transition-all">
+                    <i class="fas fa-network-wired text-primary text-3xl mb-4"></i>
+                    <h3 class="text-xl font-bold mb-3">MQTT & CoAP Protocols</h3>
+                    <p class="text-gray-400">Master IoT communication protocols, message queuing, and real-time data transmission</p>
+                </div>
+                <div class="bg-dark p-6 rounded-xl border-2 border-gray-800 hover:border-primary transition-all">
+                    <i class="fas fa-mobile-alt text-primary text-3xl mb-4"></i>
+                    <h3 class="text-xl font-bold mb-3">Mobile App Integration</h3>
+                    <p class="text-gray-400">Build companion mobile apps to control IoT devices using Blynk and MIT App Inventor</p>
+                </div>
+                <div class="bg-dark p-6 rounded-xl border-2 border-gray-800 hover:border-primary transition-all">
+                    <i class="fas fa-certificate text-primary text-3xl mb-4"></i>
+                    <h3 class="text-xl font-bold mb-3">Dual Certification</h3>
+                    <p class="text-gray-400">Receive both Course Completion and Internship certificates recognized by industry</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificates Section -->
+    <section class="py-16 bg-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-orbitron font-bold text-center mb-12">
+                Earn <span class="text-primary">Dual Certificates</span>
+            </h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-gradient-to-br from-primary/20 to-dark border-2 border-primary rounded-xl p-8">
+                    <div class="text-6xl mb-4">🎓</div>
+                    <h3 class="text-2xl font-bold mb-4">IoT Development Certificate</h3>
+                    <p class="text-gray-300 mb-6">Upon successful completion of all modules, projects, and assessments, you'll receive an official Course Completion Certificate validating your IoT development skills.</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-primary"></i>
+                            <span>Verified by PassionBots</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-primary"></i>
+                            <span>Shareable on LinkedIn</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-primary"></i>
+                            <span>Industry Recognized</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-gradient-to-br from-blue-500/20 to-dark border-2 border-blue-500 rounded-xl p-8">
+                    <div class="text-6xl mb-4">💼</div>
+                    <h3 class="text-2xl font-bold mb-4">Internship Certificate</h3>
+                    <p class="text-gray-300 mb-6">Complete hands-on IoT projects and receive an official Internship Certificate that demonstrates real-world experience to potential employers.</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-blue-500"></i>
+                            <span>2 Months Experience</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-blue-500"></i>
+                            <span>Project Portfolio</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-blue-500"></i>
+                            <span>Boosts Resume Value</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Curriculum Preview -->
+    <section id="curriculum" class="py-16 bg-dark-secondary">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-orbitron font-bold text-center mb-4">
+                Comprehensive <span class="text-primary">Curriculum</span>
+            </h2>
+            <p class="text-center text-gray-400 mb-12 text-lg">8 weeks of intensive, hands-on IoT development training</p>
+            
+            <div class="bg-dark border-2 border-primary rounded-xl p-8 mb-8">
+                <h3 class="text-2xl font-bold mb-6 text-primary">Month 1: IoT Fundamentals & Hardware</h3>
+                <div class="space-y-6">
+                    <div class="border-l-4 border-primary pl-6">
+                        <h4 class="text-xl font-bold mb-2">Week 1: Introduction to IoT</h4>
+                        <ul class="text-gray-400 space-y-1">
+                            <li>• IoT Architecture and Components</li>
+                            <li>• Sensors and Actuators Overview</li>
+                            <li>• Arduino Basics and Programming</li>
+                            <li>• Digital I/O and Analog Readings</li>
+                            <li>• Project: Temperature & Humidity Monitor</li>
+                        </ul>
+                    </div>
+                    <div class="border-l-4 border-primary pl-6">
+                        <h4 class="text-xl font-bold mb-2">Week 2: ESP32 Development</h4>
+                        <ul class="text-gray-400 space-y-1">
+                            <li>• ESP32 Architecture and Features</li>
+                            <li>• WiFi and Bluetooth Connectivity</li>
+                            <li>• Web Server on ESP32</li>
+                            <li>• Remote Device Control</li>
+                            <li>• Project: WiFi-Controlled LED System</li>
+                        </ul>
+                    </div>
+                    <div class="border-l-4 border-primary pl-6">
+                        <h4 class="text-xl font-bold mb-2">Week 3: Sensors & Data Collection</h4>
+                        <ul class="text-gray-400 space-y-1">
+                            <li>• Temperature, Humidity, Pressure Sensors</li>
+                            <li>• Motion Detection and PIR Sensors</li>
+                            <li>• Gas and Smoke Detection</li>
+                            <li>• Data Logging and Visualization</li>
+                            <li>• Project: Multi-Sensor Environmental Station</li>
+                        </ul>
+                    </div>
+                    <div class="border-l-4 border-primary pl-6">
+                        <h4 class="text-xl font-bold mb-2">Week 4: Communication Protocols</h4>
+                        <ul class="text-gray-400 space-y-1">
+                            <li>• MQTT Protocol and Message Broker</li>
+                            <li>• CoAP for Constrained Networks</li>
+                            <li>• HTTP/HTTPS REST APIs</li>
+                            <li>• WebSockets for Real-time Communication</li>
+                            <li>• Project: MQTT-Based Home Automation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-dark border-2 border-primary rounded-xl p-8 mb-8">
+                <h3 class="text-2xl font-bold mb-6 text-primary">Month 2: Cloud Integration & Advanced Projects</h3>
+                <div class="space-y-6">
+                    <div class="border-l-4 border-primary pl-6">
+                        <h4 class="text-xl font-bold mb-2">Week 5: Cloud IoT Platforms</h4>
+                        <ul class="text-gray-400 space-y-1">
+                            <li>• AWS IoT Core Setup and Device Management</li>
+                            <li>• Google Cloud IoT Integration</li>
+                            <li>• ThingSpeak Data Analytics</li>
+                            <li>• Firebase Real-time Database</li>
+                            <li>• Project: Cloud-Connected Weather Dashboard</li>
+                        </ul>
+                    </div>
+                    <div class="border-l-4 border-primary pl-6">
+                        <h4 class="text-xl font-bold mb-2">Week 6: Mobile App Development</h4>
+                        <ul class="text-gray-400 space-y-1">
+                            <li>• Blynk App for IoT Control</li>
+                            <li>• MIT App Inventor Basics</li>
+                            <li>• Bluetooth Device Pairing</li>
+                            <li>• Push Notifications and Alerts</li>
+                            <li>• Project: Smart Home Control App</li>
+                        </ul>
+                    </div>
+                    <div class="border-l-4 border-primary pl-6">
+                        <h4 class="text-xl font-bold mb-2">Week 7: Industrial IoT & Security</h4>
+                        <ul class="text-gray-400 space-y-1">
+                            <li>• IIoT Architecture and Applications</li>
+                            <li>• Asset Tracking and Monitoring</li>
+                            <li>• IoT Security Best Practices</li>
+                            <li>• Encryption and Authentication</li>
+                            <li>• Project: Industrial Equipment Monitor</li>
+                        </ul>
+                    </div>
+                    <div class="border-l-4 border-primary pl-6">
+                        <h4 class="text-xl font-bold mb-2">Week 8: Capstone Project</h4>
+                        <ul class="text-gray-400 space-y-1">
+                            <li>• End-to-End IoT System Design</li>
+                            <li>• Smart City or Smart Agriculture Project</li>
+                            <li>• Integration of Multiple Technologies</li>
+                            <li>• Professional Documentation</li>
+                            <li>• Final Presentation and Demo</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <a href="#" class="btn-primary text-lg px-8 py-4 inline-block">
+                    <i class="fas fa-download mr-2"></i>Download Full Curriculum PDF
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Company Partnerships -->
+    <section class="py-16 bg-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-orbitron font-bold text-center mb-4">
+                Our <span class="text-primary">Industry Partners</span>
+            </h2>
+            <p class="text-center text-gray-400 mb-12">Curriculum aligned with technologies used by leading IoT companies</p>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center">
+                <div class="bg-white p-6 rounded-lg flex items-center justify-center h-24">
+                    <span class="text-2xl font-bold text-gray-800">AWS IoT</span>
+                </div>
+                <div class="bg-white p-6 rounded-lg flex items-center justify-center h-24">
+                    <span class="text-2xl font-bold text-gray-800">Google Cloud</span>
+                </div>
+                <div class="bg-white p-6 rounded-lg flex items-center justify-center h-24">
+                    <span class="text-2xl font-bold text-gray-800">IBM IoT</span>
+                </div>
+                <div class="bg-white p-6 rounded-lg flex items-center justify-center h-24">
+                    <span class="text-2xl font-bold text-gray-800">Cisco</span>
+                </div>
+                <div class="bg-white p-6 rounded-lg flex items-center justify-center h-24">
+                    <span class="text-2xl font-bold text-gray-800">Siemens</span>
+                </div>
+                <div class="bg-white p-6 rounded-lg flex items-center justify-center h-24">
+                    <span class="text-2xl font-bold text-gray-800">Bosch</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 bg-dark-secondary">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-orbitron font-bold text-center mb-12">
+                Frequently Asked <span class="text-primary">Questions</span>
+            </h2>
+            <div class="space-y-4">
+                <div class="faq-item bg-dark border border-gray-800 rounded-lg overflow-hidden">
+                    <button class="faq-question w-full text-left px-6 py-4 font-bold text-lg hover:bg-gray-900 transition-all flex justify-between items-center">
+                        <span>What are the prerequisites for this IoT course?</span>
+                        <i class="fas fa-chevron-down text-primary"></i>
+                    </button>
+                    <div class="faq-answer px-6 py-4 text-gray-400 border-t border-gray-800">
+                        Basic programming knowledge (C/C++ or Python) is helpful but not mandatory. We start from fundamentals and build up. Familiarity with electronics basics like Ohm's law and circuit components is beneficial. We provide pre-course materials to help beginners get started.
+                    </div>
+                </div>
+                <div class="faq-item bg-dark border border-gray-800 rounded-lg overflow-hidden">
+                    <button class="faq-question w-full text-left px-6 py-4 font-bold text-lg hover:bg-gray-900 transition-all flex justify-between items-center">
+                        <span>Do I need to purchase any hardware or components?</span>
+                        <i class="fas fa-chevron-down text-primary"></i>
+                    </button>
+                    <div class="faq-answer px-6 py-4 text-gray-400 border-t border-gray-800">
+                        We provide a comprehensive IoT Development Kit including ESP32 board, Arduino Uno, breadboard, sensors (DHT11, PIR, ultrasonic), LEDs, jumper wires, and all necessary components for the projects. The kit is shipped to your address after enrollment.
+                    </div>
+                </div>
+                <div class="faq-item bg-dark border border-gray-800 rounded-lg overflow-hidden">
+                    <button class="faq-question w-full text-left px-6 py-4 font-bold text-lg hover:bg-gray-900 transition-all flex justify-between items-center">
+                        <span>Which cloud platforms will we work with?</span>
+                        <i class="fas fa-chevron-down text-primary"></i>
+                    </button>
+                    <div class="faq-answer px-6 py-4 text-gray-400 border-t border-gray-800">
+                        You'll get hands-on experience with AWS IoT Core, Google Cloud IoT, ThingSpeak, and Firebase. We provide free tier credits and guidance for each platform. Projects include cloud data storage, real-time dashboards, and remote device management.
+                    </div>
+                </div>
+                <div class="faq-item bg-dark border border-gray-800 rounded-lg overflow-hidden">
+                    <button class="faq-question w-full text-left px-6 py-4 font-bold text-lg hover:bg-gray-900 transition-all flex justify-between items-center">
+                        <span>Will I build real-world IoT projects?</span>
+                        <i class="fas fa-chevron-down text-primary"></i>
+                    </button>
+                    <div class="faq-answer px-6 py-4 text-gray-400 border-t border-gray-800">
+                        Absolutely! You'll build 15+ projects including smart home automation, weather monitoring station, asset tracking system, industrial equipment monitor, and a comprehensive capstone project. All projects are documented in your portfolio with video demonstrations.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enrollment CTA -->
+    <section id="enroll" class="py-20 bg-gradient-to-br from-primary to-yellow-600">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl md:text-5xl font-orbitron font-bold text-dark mb-6">
+                Start Your IoT Journey Today
+            </h2>
+            <p class="text-xl text-dark/80 mb-8">
+                Limited seats available • Next batch starts soon • Special 50% discount ending soon
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="/static/pages/login.html" class="bg-dark hover:bg-gray-900 text-white px-10 py-5 rounded-lg text-xl font-bold transition-all">
+                    <i class="fas fa-rocket mr-2"></i>Enroll Now - ₹5,999
+                </a>
+                <a href="https://wa.me/919137361474?text=I want to enroll in IoT Development Internship" target="_blank" class="bg-green-500 hover:bg-green-600 text-white px-10 py-5 rounded-lg text-xl font-bold transition-all">
+                    <i class="fab fa-whatsapp mr-2"></i>WhatsApp to Enroll
+                </a>
+            </div>
+            <p class="mt-6 text-dark/70">
+                <i class="fas fa-shield-alt mr-2"></i>100% Money-back guarantee if not satisfied
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark border-t border-gray-800 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <i class="fas fa-robot text-primary text-2xl"></i>
+                        <span class="font-orbitron text-xl font-bold">Passion<span class="text-primary">Bots</span></span>
+                    </div>
+                    <p class="text-gray-400">Empowering the next generation of robotics and AI innovators through hands-on education and real-world projects.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="/" class="hover:text-primary">Home</a></li>
+                        <li><a href="/static/pages/about.html" class="hover:text-primary">About Us</a></li>
+                        <li><a href="/static/pages/courses.html" class="hover:text-primary">All Courses</a></li>
+                        <li><a href="/static/pages/contact.html" class="hover:text-primary">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Courses</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="/course/robotics-fundamentals" class="hover:text-primary">Robotics Fundamentals</a></li>
+                        <li><a href="/course/ai-machine-learning" class="hover:text-primary">AI & Machine Learning</a></li>
+                        <li><a href="/course/iot-development" class="hover:text-primary">IoT Development</a></li>
+                        <li><a href="/course/advanced-automation" class="hover:text-primary">Advanced Automation</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Contact</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><i class="fas fa-envelope text-primary mr-2"></i>sales@passionbots.in</li>
+                        <li><i class="fas fa-phone text-primary mr-2"></i>+91 9137361474</li>
+                        <li><i class="fas fa-map-marker-alt text-primary mr-2"></i>Mumbai, India</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 PassionBots. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.0/dist/axios.min.js"></script>
+    <script src="/static/js/main.js"></script>
+    <script>
+        // Initialize FAQ functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            initFAQ();
+        });
+    </script>
+</body>
+</html>

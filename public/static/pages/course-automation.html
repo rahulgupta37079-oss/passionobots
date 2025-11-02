@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Automation Internship - PassionBots</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="/static/css/styles.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FFD300',
+                        dark: '#0a0a0a',
+                        'dark-secondary': '#1a1a1a'
+                    },
+                    fontFamily: {
+                        'orbitron': ['Orbitron', 'sans-serif'],
+                        'rajdhani': ['Rajdhani', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-dark text-white font-rajdhani">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-dark/95 backdrop-blur-sm border-b border-gray-800 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center gap-3">
+                    <i class="fas fa-robot text-primary text-3xl"></i>
+                    <span class="font-orbitron text-2xl font-bold">Passion<span class="text-primary">Bots</span></span>
+                </div>
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="/" class="nav-link">Home</a>
+                    <a href="/static/pages/about.html" class="nav-link">About</a>
+                    <div class="course-menu-dropdown relative">
+                        <a href="/static/pages/courses.html" class="nav-link">Courses <i class="fas fa-chevron-down text-xs ml-1"></i></a>
+                        <div class="course-dropdown">
+                            <a href="/course/robotics-fundamentals" class="block px-4 py-3 hover:bg-gray-700 border-b border-gray-700">
+                                <div class="font-semibold text-primary">Robotics Fundamentals</div>
+                                <div class="text-sm text-gray-400">Beginner • 2 Months • ₹4,999</div>
+                            </a>
+                            <a href="/course/ai-machine-learning" class="block px-4 py-3 hover:bg-gray-700 border-b border-gray-700">
+                                <div class="font-semibold text-primary">AI & Machine Learning</div>
+                                <div class="text-sm text-gray-400">Intermediate • 2 Months • ₹7,999</div>
+                            </a>
+                            <a href="/course/iot-development" class="block px-4 py-3 hover:bg-gray-700 border-b border-gray-700">
+                                <div class="font-semibold text-primary">IoT Development</div>
+                                <div class="text-sm text-gray-400">Intermediate • 2 Months • ₹5,999</div>
+                            </a>
+                            <a href="/course/advanced-automation" class="block px-4 py-3 hover:bg-gray-700">
+                                <div class="font-semibold text-primary">Advanced Automation</div>
+                                <div class="text-sm text-gray-400">Advanced • 2 Months • ₹9,999</div>
+                            </a>
+                        </div>
+                    </div>
+                    <a href="/static/pages/gallery.html" class="nav-link">Gallery</a>
+                    <a href="/static/pages/contact.html" class="nav-link">Contact</a>
+                    <a href="/static/pages/login.html" class="btn-primary">Login</a>
+                </div>
+                <button class="md:hidden text-white">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-16 bg-gradient-to-br from-dark via-gray-900 to-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center gap-2 mb-4">
+                <span class="px-3 py-1 bg-red-500/20 text-red-400 rounded-full text-sm">ADVANCED LEVEL</span>
+                <span class="px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-sm">2 MONTHS DURATION</span>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-orbitron font-bold mb-6">
+                Advanced Automation <span class="text-primary">Internship</span>
+            </h1>
+            <p class="text-xl text-gray-300 mb-8 max-w-3xl">
+                Master industrial automation with PLC programming, SCADA systems, HMI design, and Industry 4.0 technologies. Gain expertise in factory automation, process control, and industrial robotics used by leading manufacturers worldwide.
+            </p>
+            <div class="flex flex-wrap items-center gap-6 mb-8">
+                <div class="flex items-center gap-4">
+                    <div class="text-4xl font-bold text-primary">₹9,999</div>
+                    <div class="text-2xl text-gray-400 line-through">₹19,999</div>
+                    <div class="bg-green-500 text-white px-3 py-1 rounded-full font-bold">50% OFF</div>
+                </div>
+            </div>
+            <div class="flex flex-wrap gap-6 mb-8">
+                <div class="flex items-center gap-2">
+                    <i class="fas fa-users text-primary text-xl"></i>
+                    <span class="text-gray-300">1,500+ Students Enrolled</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <i class="fas fa-star text-yellow-400 text-xl"></i>
+                    <span class="text-gray-300">4.9/5 Rating (350+ Reviews)</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <i class="fas fa-clock text-primary text-xl"></i>
+                    <span class="text-gray-300">2 Months • 8 Weeks</span>
+                </div>
+            </div>
+            <div class="flex flex-wrap gap-4">
+                <a href="#enroll" class="btn-primary text-lg px-8 py-4">
+                    <i class="fas fa-rocket mr-2"></i>Enroll Now
+                </a>
+                <a href="#curriculum" class="bg-white/10 hover:bg-white/20 text-white px-8 py-4 rounded-lg font-semibold transition-all">
+                    <i class="fas fa-book mr-2"></i>View Curriculum
+                </a>
+                <a href="https://wa.me/919137361474?text=I'm interested in Advanced Automation Internship" target="_blank" class="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold transition-all">
+                    <i class="fab fa-whatsapp mr-2"></i>WhatsApp Us
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Contact Bar -->
+    <section class="bg-primary py-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-wrap justify-center items-center gap-6 md:gap-12 text-dark font-semibold">
+                <a href="mailto:sales@passionbots.in" class="flex items-center gap-2 hover:underline">
+                    <i class="fas fa-envelope"></i>
+                    <span>sales@passionbots.in</span>
+                </a>
+                <a href="tel:+919137361474" class="flex items-center gap-2 hover:underline">
+                    <i class="fas fa-phone"></i>
+                    <span>+91 9137361474</span>
+                </a>
+                <a href="https://wa.me/919137361474" target="_blank" class="flex items-center gap-2 hover:underline">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>WhatsApp for Instant Support</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Program Highlights -->
+    <section class="py-16 bg-dark-secondary">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-orbitron font-bold text-center mb-12">
+                Program <span class="text-primary">Highlights</span>
+            </h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-dark p-6 rounded-xl border-2 border-gray-800 hover:border-primary transition-all">
+                    <i class="fas fa-industry text-primary text-3xl mb-4"></i>
+                    <h3 class="text-xl font-bold mb-3">PLC Programming Mastery</h3>
+                    <p class="text-gray-400">Master Siemens S7-1200/1500, Allen-Bradley ControlLogix, Mitsubishi FX5U with ladder logic, function blocks, and structured text</p>
+                </div>
+                <div class="bg-dark p-6 rounded-xl border-2 border-gray-800 hover:border-primary transition-all">
+                    <i class="fas fa-desktop text-primary text-3xl mb-4"></i>
+                    <h3 class="text-xl font-bold mb-3">SCADA & HMI Design</h3>
+                    <p class="text-gray-400">WinCC, InTouch, Wonderware for real-time monitoring, control, data acquisition, and professional HMI interface design</p>
+                </div>
+                <div class="bg-dark p-6 rounded-xl border-2 border-gray-800 hover:border-primary transition-all">
+                    <i class="fas fa-robot text-primary text-3xl mb-4"></i>
+                    <h3 class="text-xl font-bold mb-3">Industrial Robotics</h3>
+                    <p class="text-gray-400">ABB, KUKA, FANUC robot programming, pick-and-place operations, welding automation, assembly line integration</p>
+                </div>
+                <div class="bg-dark p-6 rounded-xl border-2 border-gray-800 hover:border-primary transition-all">
+                    <i class="fas fa-network-wired text-primary text-3xl mb-4"></i>
+                    <h3 class="text-xl font-bold mb-3">Industrial Networks</h3>
+                    <p class="text-gray-400">Profinet, Ethernet/IP, Modbus TCP/RTU, DeviceNet protocols for seamless device communication and integration</p>
+                </div>
+                <div class="bg-dark p-6 rounded-xl border-2 border-gray-800 hover:border-primary transition-all">
+                    <i class="fas fa-cogs text-primary text-3xl mb-4"></i>
+                    <h3 class="text-xl font-bold mb-3">Industry 4.0 Technologies</h3>
+                    <p class="text-gray-400">IIoT integration, predictive maintenance, digital twins, cloud connectivity, MES/ERP integration</p>
+                </div>
+                <div class="bg-dark p-6 rounded-xl border-2 border-gray-800 hover:border-primary transition-all">
+                    <i class="fas fa-certificate text-primary text-3xl mb-4"></i>
+                    <h3 class="text-xl font-bold mb-3">Dual Certification</h3>
+                    <p class="text-gray-400">Industry-recognized Course Completion and Internship certificates valued by top manufacturing companies</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificates Section -->
+    <section class="py-16 bg-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-orbitron font-bold text-center mb-12">
+                Earn <span class="text-primary">Dual Certificates</span>
+            </h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-gradient-to-br from-primary/20 to-dark border-2 border-primary rounded-xl p-8">
+                    <div class="text-6xl mb-4">🎓</div>
+                    <h3 class="text-2xl font-bold mb-4">Advanced Automation Certificate</h3>
+                    <p class="text-gray-300 mb-6">Upon successful completion of all modules, PLC projects, and SCADA implementations, you'll receive an official Course Completion Certificate recognized by industrial automation companies.</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-primary"></i>
+                            <span>Verified by PassionBots</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-primary"></i>
+                            <span>Shareable on LinkedIn</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-primary"></i>
+                            <span>Industry Recognized</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-gradient-to-br from-blue-500/20 to-dark border-2 border-blue-500 rounded-xl p-8">
+                    <div class="text-6xl mb-4">💼</div>
+                    <h3 class="text-2xl font-bold mb-4">Internship Certificate</h3>
+                    <p class="text-gray-300 mb-6">Complete industrial automation projects including factory automation systems and receive an Internship Certificate demonstrating hands-on experience with real-world manufacturing scenarios.</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-blue-500"></i>
+                            <span>2 Months Experience</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-blue-500"></i>
+                            <span>Industrial Project Portfolio</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-blue-500"></i>
+                            <span>Career Advancement</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Curriculum Preview -->
+    <section id="curriculum" class="py-16 bg-dark-secondary">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-orbitron font-bold text-center mb-4">
+                Comprehensive <span class="text-primary">Curriculum</span>
+            </h2>
+            <p class="text-center text-gray-400 mb-12 text-lg">8 weeks of intensive industrial automation training with real-world projects</p>
+            
+            <div class="bg-dark border-2 border-primary rounded-xl p-8 mb-8">
+                <h3 class="text-2xl font-bold mb-6 text-primary">Month 1: PLC & SCADA Fundamentals</h3>
+                <div class="space-y-6">
+                    <div class="border-l-4 border-primary pl-6">
+                        <h4 class="text-xl font-bold mb-2">Week 1: Introduction to Industrial Automation</h4>
+                        <ul class="text-gray-400 space-y-1">
+                            <li>• Automation Pyramid and Control Architectures</li>
+                            <li>• PLC vs DCS vs PAC Systems</li>
+                            <li>• Siemens TIA Portal Basics</li>
+                            <li>• Ladder Logic Programming Fundamentals</li>
+                            <li>• Project: Traffic Light Control System</li>
+                        </ul>
+                    </div>
+                    <div class="border-l-4 border-primary pl-6">
+                        <h4 class="text-xl font-bold mb-2">Week 2: Advanced PLC Programming</h4>
+                        <ul class="text-gray-400 space-y-1">
+                            <li>• Function Blocks and Structured Text</li>
+                            <li>• Timers, Counters, and Data Handling</li>
+                            <li>• Analog Input/Output Processing</li>
+                            <li>• PID Control Algorithms</li>
+                            <li>• Project: Automated Conveyor System</li>
+                        </ul>
+                    </div>
+                    <div class="border-l-4 border-primary pl-6">
+                        <h4 class="text-xl font-bold mb-2">Week 3: SCADA Systems</h4>
+                        <ul class="text-gray-400 space-y-1">
+                            <li>• SCADA Architecture and Components</li>
+                            <li>• WinCC & InTouch Programming</li>
+                            <li>• Real-time Data Acquisition</li>
+                            <li>• Alarm Management and Trending</li>
+                            <li>• Project: Process Monitoring Dashboard</li>
+                        </ul>
+                    </div>
+                    <div class="border-l-4 border-primary pl-6">
+                        <h4 class="text-xl font-bold mb-2">Week 4: HMI Design & Industrial Networks</h4>
+                        <ul class="text-gray-400 space-y-1">
+                            <li>• Professional HMI Interface Design</li>
+                            <li>• User Management and Security</li>
+                            <li>• Profinet and Ethernet/IP Configuration</li>
+                            <li>• Modbus TCP/RTU Communication</li>
+                            <li>• Project: Multi-Device Networked System</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-dark border-2 border-primary rounded-xl p-8 mb-8">
+                <h3 class="text-2xl font-bold mb-6 text-primary">Month 2: Industrial Robotics & Industry 4.0</h3>
+                <div class="space-y-6">
+                    <div class="border-l-4 border-primary pl-6">
+                        <h4 class="text-xl font-bold mb-2">Week 5: Industrial Robot Programming</h4>
+                        <ul class="text-gray-400 space-y-1">
+                            <li>• ABB Robot Studio Simulation</li>
+                            <li>• RAPID Programming Language</li>
+                            <li>• Pick-and-Place Operations</li>
+                            <li>• Path Planning and Trajectory Control</li>
+                            <li>• Project: Automated Assembly Line Simulation</li>
+                        </ul>
+                    </div>
+                    <div class="border-l-4 border-primary pl-6">
+                        <h4 class="text-xl font-bold mb-2">Week 6: Motion Control & Drives</h4>
+                        <ul class="text-gray-400 space-y-1">
+                            <li>• Servo Motors and VFD Configuration</li>
+                            <li>• Motion Control with PLCs</li>
+                            <li>• Cam Profiling and Electronic Gearing</li>
+                            <li>• Safety Systems (SIL, Safety PLCs)</li>
+                            <li>• Project: Multi-Axis Positioning System</li>
+                        </ul>
+                    </div>
+                    <div class="border-l-4 border-primary pl-6">
+                        <h4 class="text-xl font-bold mb-2">Week 7: Industry 4.0 & IIoT</h4>
+                        <ul class="text-gray-400 space-y-1">
+                            <li>• IIoT Architecture and Edge Computing</li>
+                            <li>• OPC UA Protocol Implementation</li>
+                            <li>• Cloud Connectivity (Azure IoT, AWS)</li>
+                            <li>• Predictive Maintenance Strategies</li>
+                            <li>• Project: Smart Factory Dashboard with Analytics</li>
+                        </ul>
+                    </div>
+                    <div class="border-l-4 border-primary pl-6">
+                        <h4 class="text-xl font-bold mb-2">Week 8: Capstone Project</h4>
+                        <ul class="text-gray-400 space-y-1">
+                            <li>• End-to-End Factory Automation System</li>
+                            <li>• PLC + SCADA + Robot Integration</li>
+                            <li>• MES/ERP Integration</li>
+                            <li>• Professional Documentation & Commissioning</li>
+                            <li>• Final Presentation to Industry Panel</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <a href="#" class="btn-primary text-lg px-8 py-4 inline-block">
+                    <i class="fas fa-download mr-2"></i>Download Full Curriculum PDF
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Company Partnerships -->
+    <section class="py-16 bg-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-orbitron font-bold text-center mb-4">
+                Our <span class="text-primary">Industry Partners</span>
+            </h2>
+            <p class="text-center text-gray-400 mb-12">Curriculum aligned with technologies used by global automation leaders</p>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center">
+                <div class="bg-white p-6 rounded-lg flex items-center justify-center h-24">
+                    <span class="text-2xl font-bold text-gray-800">Siemens</span>
+                </div>
+                <div class="bg-white p-6 rounded-lg flex items-center justify-center h-24">
+                    <span class="text-2xl font-bold text-gray-800">ABB</span>
+                </div>
+                <div class="bg-white p-6 rounded-lg flex items-center justify-center h-24">
+                    <span class="text-2xl font-bold text-gray-800">Rockwell</span>
+                </div>
+                <div class="bg-white p-6 rounded-lg flex items-center justify-center h-24">
+                    <span class="text-2xl font-bold text-gray-800">Schneider</span>
+                </div>
+                <div class="bg-white p-6 rounded-lg flex items-center justify-center h-24">
+                    <span class="text-2xl font-bold text-gray-800">Honeywell</span>
+                </div>
+                <div class="bg-white p-6 rounded-lg flex items-center justify-center h-24">
+                    <span class="text-2xl font-bold text-gray-800">FANUC</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 bg-dark-secondary">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-orbitron font-bold text-center mb-12">
+                Frequently Asked <span class="text-primary">Questions</span>
+            </h2>
+            <div class="space-y-4">
+                <div class="faq-item bg-dark border border-gray-800 rounded-lg overflow-hidden">
+                    <button class="faq-question w-full text-left px-6 py-4 font-bold text-lg hover:bg-gray-900 transition-all flex justify-between items-center">
+                        <span>What experience do I need for this advanced course?</span>
+                        <i class="fas fa-chevron-down text-primary"></i>
+                    </button>
+                    <div class="faq-answer px-6 py-4 text-gray-400 border-t border-gray-800">
+                        This is an advanced course requiring basic understanding of electronics, electrical systems, and control theory. Prior exposure to PLCs or industrial systems is beneficial but not mandatory. We recommend completing our Robotics Fundamentals course or having equivalent experience before enrolling.
+                    </div>
+                </div>
+                <div class="faq-item bg-dark border border-gray-800 rounded-lg overflow-hidden">
+                    <button class="faq-question w-full text-left px-6 py-4 font-bold text-lg hover:bg-gray-900 transition-all flex justify-between items-center">
+                        <span>What PLC software and simulators will we use?</span>
+                        <i class="fas fa-chevron-down text-primary"></i>
+                    </button>
+                    <div class="faq-answer px-6 py-4 text-gray-400 border-t border-gray-800">
+                        We provide licensed access to Siemens TIA Portal, Allen-Bradley Studio 5000, ABB RobotStudio, and Factory I/O simulation software. All software licenses are included in the course fee, and you'll have access throughout the 2-month program and 3 months after completion.
+                    </div>
+                </div>
+                <div class="faq-item bg-dark border border-gray-800 rounded-lg overflow-hidden">
+                    <button class="faq-question w-full text-left px-6 py-4 font-bold text-lg hover:bg-gray-900 transition-all flex justify-between items-center">
+                        <span>Will I work with real industrial hardware?</span>
+                        <i class="fas fa-chevron-down text-primary"></i>
+                    </button>
+                    <div class="faq-answer px-6 py-4 text-gray-400 border-t border-gray-800">
+                        While the course uses industry-standard simulation software, we also provide optional lab access (for students in select cities) where you can work with actual PLCs, HMIs, sensors, and industrial robots. Remote students will gain comprehensive experience through high-fidelity simulations that mirror real-world behavior.
+                    </div>
+                </div>
+                <div class="faq-item bg-dark border border-gray-800 rounded-lg overflow-hidden">
+                    <button class="faq-question w-full text-left px-6 py-4 font-bold text-lg hover:bg-gray-900 transition-all flex justify-between items-center">
+                        <span>What career opportunities does this course open?</span>
+                        <i class="fas fa-chevron-down text-primary"></i>
+                    </button>
+                    <div class="faq-answer px-6 py-4 text-gray-400 border-t border-gray-800">
+                        Graduates can pursue roles such as Automation Engineer, PLC Programmer, SCADA Engineer, Controls Engineer, Industrial Robotics Specialist, and Industry 4.0 Consultant. Average starting salaries range from ₹4-8 lakhs per annum, with experienced professionals earning ₹12+ lakhs. We provide placement assistance and interview preparation.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enrollment CTA -->
+    <section id="enroll" class="py-20 bg-gradient-to-br from-primary to-yellow-600">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl md:text-5xl font-orbitron font-bold text-dark mb-6">
+                Become an Automation Expert
+            </h2>
+            <p class="text-xl text-dark/80 mb-8">
+                Limited seats available • Industry-expert instructors • Special 50% discount ending soon
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="/static/pages/login.html" class="bg-dark hover:bg-gray-900 text-white px-10 py-5 rounded-lg text-xl font-bold transition-all">
+                    <i class="fas fa-rocket mr-2"></i>Enroll Now - ₹9,999
+                </a>
+                <a href="https://wa.me/919137361474?text=I want to enroll in Advanced Automation Internship" target="_blank" class="bg-green-500 hover:bg-green-600 text-white px-10 py-5 rounded-lg text-xl font-bold transition-all">
+                    <i class="fab fa-whatsapp mr-2"></i>WhatsApp to Enroll
+                </a>
+            </div>
+            <p class="mt-6 text-dark/70">
+                <i class="fas fa-shield-alt mr-2"></i>100% Money-back guarantee if not satisfied
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark border-t border-gray-800 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <i class="fas fa-robot text-primary text-2xl"></i>
+                        <span class="font-orbitron text-xl font-bold">Passion<span class="text-primary">Bots</span></span>
+                    </div>
+                    <p class="text-gray-400">Empowering the next generation of robotics and AI innovators through hands-on education and real-world projects.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="/" class="hover:text-primary">Home</a></li>
+                        <li><a href="/static/pages/about.html" class="hover:text-primary">About Us</a></li>
+                        <li><a href="/static/pages/courses.html" class="hover:text-primary">All Courses</a></li>
+                        <li><a href="/static/pages/contact.html" class="hover:text-primary">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Courses</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="/course/robotics-fundamentals" class="hover:text-primary">Robotics Fundamentals</a></li>
+                        <li><a href="/course/ai-machine-learning" class="hover:text-primary">AI & Machine Learning</a></li>
+                        <li><a href="/course/iot-development" class="hover:text-primary">IoT Development</a></li>
+                        <li><a href="/course/advanced-automation" class="hover:text-primary">Advanced Automation</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Contact</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><i class="fas fa-envelope text-primary mr-2"></i>sales@passionbots.in</li>
+                        <li><i class="fas fa-phone text-primary mr-2"></i>+91 9137361474</li>
+                        <li><i class="fas fa-map-marker-alt text-primary mr-2"></i>Mumbai, India</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 PassionBots. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.0/dist/axios.min.js"></script>
+    <script src="/static/js/main.js"></script>
+    <script>
+        // Initialize FAQ functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            initFAQ();
+        });
+    </script>
+</body>
+</html>

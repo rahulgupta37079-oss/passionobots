@@ -1,8 +1,9 @@
 import { Hono } from 'hono'
 import { cors } from 'hono/cors'
 import { serveStatic } from 'hono/cloudflare-workers'
+import type { Bindings } from './types/bindings'
 
-const app = new Hono()
+const app = new Hono<{ Bindings: Bindings }>()
 
 // Enable CORS for API routes
 app.use('/api/*', cors())
@@ -180,10 +181,32 @@ app.get('/api/course/:slug', (c) => {
 })
 
 app.post('/api/contact', async (c) => {
-  const data = await c.req.json()
-  // In production, you would save this to a database or send an email
-  console.log('Contact form submission:', data)
-  return c.json({ success: true, message: 'Thank you! We will contact you soon.' })
+  try {
+    const data = await c.req.json()
+    const { name, email, phone, subject, message } = data
+    
+    // Save to database if DB is available (production)
+    if (c.env?.DB) {
+      await c.env.DB.prepare(`
+        INSERT INTO contacts (name, email, phone, subject, message, source, status)
+        VALUES (?, ?, ?, ?, ?, ?, ?)
+      `).bind(name, email, phone || null, subject || 'General Inquiry', message, 'contact_form', 'new').run()
+    } else {
+      // Development mode - just log
+      console.log('Contact form submission:', data)
+    }
+    
+    return c.json({ 
+      success: true, 
+      message: 'Thank you! We will contact you soon. Our team will reach out within 24 hours.' 
+    })
+  } catch (error) {
+    console.error('Contact form error:', error)
+    return c.json({ 
+      success: false, 
+      message: 'Something went wrong. Please try again or contact us at sales@passionbots.in' 
+    }, 500)
+  }
 })
 
 app.post('/api/auth/login', async (c) => {
@@ -210,6 +233,151 @@ app.post('/api/auth/signup', async (c) => {
     })
   }
   return c.json({ success: false, message: 'Invalid data' }, 400)
+})
+
+// Course enrollment API
+app.post('/api/enroll', async (c) => {
+  try {
+    const data = await c.req.json()
+    const { name, email, phone, course_slug, course_name, college, graduation_year, experience_level, hear_about_us } = data
+    
+    // Validate required fields
+    if (!name || !email || !phone || !course_slug || !course_name) {
+      return c.json({ success: false, message: 'Missing required fields' }, 400)
+    }
+    
+    // Save to database if DB is available
+    if (c.env?.DB) {
+      await c.env.DB.prepare(`
+        INSERT INTO enrollments (name, email, phone, course_slug, course_name, college, graduation_year, experience_level, hear_about_us, status, payment_status)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      `).bind(
+        name, email, phone, course_slug, course_name,
+        college || null, graduation_year || null, experience_level || null,
+        hear_about_us || null, 'pending', 'unpaid'
+      ).run()
+    } else {
+      console.log('Enrollment submission:', data)
+    }
+    
+    return c.json({ 
+      success: true, 
+      message: 'Enrollment request received! Our team will contact you within 24 hours with payment details.' 
+    })
+  } catch (error) {
+    console.error('Enrollment error:', error)
+    return c.json({ 
+      success: false, 
+      message: 'Failed to submit enrollment. Please contact sales@passionbots.in' 
+    }, 500)
+  }
+})
+
+// Course inquiry API (for WhatsApp clicks, etc.)
+app.post('/api/course-inquiry', async (c) => {
+  try {
+    const data = await c.req.json()
+    const { name, email, phone, course_slug, course_name, inquiry_type, message } = data
+    
+    if (!course_slug || !course_name) {
+      return c.json({ success: false, message: 'Invalid course information' }, 400)
+    }
+    
+    if (c.env?.DB) {
+      await c.env.DB.prepare(`
+        INSERT INTO course_inquiries (name, email, phone, course_slug, course_name, inquiry_type, message, status)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+      `).bind(
+        name || null, email || null, phone || null,
+        course_slug, course_name, inquiry_type || 'general', message || null, 'new'
+      ).run()
+    }
+    
+    return c.json({ success: true, message: 'Inquiry recorded' })
+  } catch (error) {
+    console.error('Inquiry error:', error)
+    return c.json({ success: false, message: 'Failed to record inquiry' }, 500)
+  }
+})
+
+// Admin API - Get all contacts (protected - add authentication in production)
+app.get('/api/admin/contacts', async (c) => {
+  try {
+    if (!c.env?.DB) {
+      return c.json({ success: false, message: 'Database not configured' }, 500)
+    }
+    
+    const result = await c.env.DB.prepare(`
+      SELECT id, name, email, phone, subject, message, source, status, created_at
+      FROM contacts
+      ORDER BY created_at DESC
+      LIMIT 100
+    `).all()
+    
+    return c.json({ success: true, contacts: result.results })
+  } catch (error) {
+    console.error('Admin contacts error:', error)
+    return c.json({ success: false, message: 'Failed to fetch contacts' }, 500)
+  }
+})
+
+// Admin API - Get all enrollments
+app.get('/api/admin/enrollments', async (c) => {
+  try {
+    if (!c.env?.DB) {
+      return c.json({ success: false, message: 'Database not configured' }, 500)
+    }
+    
+    const result = await c.env.DB.prepare(`
+      SELECT id, name, email, phone, course_slug, course_name, college, graduation_year, 
+             experience_level, hear_about_us, status, payment_status, created_at
+      FROM enrollments
+      ORDER BY created_at DESC
+      LIMIT 100
+    `).all()
+    
+    return c.json({ success: true, enrollments: result.results })
+  } catch (error) {
+    console.error('Admin enrollments error:', error)
+    return c.json({ success: false, message: 'Failed to fetch enrollments' }, 500)
+  }
+})
+
+// Admin API - Get dashboard stats
+app.get('/api/admin/stats', async (c) => {
+  try {
+    if (!c.env?.DB) {
+      return c.json({ success: false, message: 'Database not configured' }, 500)
+    }
+    
+    // Get counts
+    const contactsCount = await c.env.DB.prepare('SELECT COUNT(*) as count FROM contacts').first()
+    const enrollmentsCount = await c.env.DB.prepare('SELECT COUNT(*) as count FROM enrollments').first()
+    const inquiriesCount = await c.env.DB.prepare('SELECT COUNT(*) as count FROM course_inquiries').first()
+    
+    // Get recent activity
+    const recentContacts = await c.env.DB.prepare(`
+      SELECT name, email, created_at FROM contacts ORDER BY created_at DESC LIMIT 5
+    `).all()
+    
+    const recentEnrollments = await c.env.DB.prepare(`
+      SELECT name, email, course_name, created_at FROM enrollments ORDER BY created_at DESC LIMIT 5
+    `).all()
+    
+    return c.json({
+      success: true,
+      stats: {
+        total_contacts: contactsCount?.count || 0,
+        total_enrollments: enrollmentsCount?.count || 0,
+        total_inquiries: inquiriesCount?.count || 0,
+        recent_contacts: recentContacts.results,
+        recent_enrollments: recentEnrollments.results
+      }
+    })
+  } catch (error) {
+    console.error('Admin stats error:', error)
+    return c.json({ success: false, message: 'Failed to fetch stats' }, 500)
+  }
 })
 
 app.get('/api/testimonials', (c) => {
@@ -918,9 +1086,10 @@ app.get('/contact', (c) => c.redirect('/static/pages/contact.html'))
 app.get('/login', (c) => c.redirect('/static/pages/login.html'))
 app.get('/testimonials', (c) => c.redirect('/static/pages/testimonials.html'))
 app.get('/why-choose', (c) => c.redirect('/static/pages/why-choose.html'))
+app.get('/admin', (c) => c.redirect('/static/pages/admin.html'))
 app.get('/course/robotics-fundamentals', (c) => c.redirect('/static/pages/course-robotics.html'))
-app.get('/course/ai-machine-learning', (c) => c.redirect('/courses'))
-app.get('/course/iot-development', (c) => c.redirect('/courses'))
-app.get('/course/advanced-automation', (c) => c.redirect('/courses'))
+app.get('/course/ai-machine-learning', (c) => c.redirect('/static/pages/course-ai-ml.html'))
+app.get('/course/iot-development', (c) => c.redirect('/static/pages/course-iot.html'))
+app.get('/course/advanced-automation', (c) => c.redirect('/static/pages/course-automation.html'))
 
 export default app
