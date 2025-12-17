@@ -13,7 +13,7 @@
     {
       "binding": "DB",
       "database_name": "passionbots-production",
-      "database_id": "REPLACE_WITH_ACTUAL_DATABASE_ID"
+      "database_id": "08e65c8c-7647-404c-99ff-eda4f10cec9d"
     }
   ]
 }
