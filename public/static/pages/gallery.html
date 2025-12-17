@@ -3,191 +3,596 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallery - PassionBots</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+    <title>Our Journey - PassionBots Gallery</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
     <link href="/static/css/styles.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              primary: '#FFD300',
-              dark: '#000000',
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FFD300',
+                        dark: '#0a0a0a',
+                        'dark-secondary': '#1a1a1a'
+                    },
+                    fontFamily: {
+                        'orbitron': ['Orbitron', 'sans-serif'],
+                        'rajdhani': ['Rajdhani', 'sans-serif']
+                    }
+                }
             }
-          },
-          fontFamily: {
-            'poppins': ['Poppins', 'sans-serif'],
-            'orbitron': ['Orbitron', 'sans-serif'],
-          }
         }
-      }
     </script>
+    <style>
+        /* Gallery Styles */
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            border-radius: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(255, 211, 0, 0.3);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
+            padding: 1.5rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+        
+        /* Lightbox Modal */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 9999;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .lightbox.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90vh;
+            position: relative;
+            animation: zoomIn 0.3s ease;
+        }
+        
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 90vh;
+            border-radius: 1rem;
+            box-shadow: 0 0 50px rgba(255, 211, 0, 0.5);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes zoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        
+        /* Timeline */
+        .timeline {
+            position: relative;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, #FFD300, transparent);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 4rem;
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: #FFD300;
+            border-radius: 50%;
+            border: 4px solid #0a0a0a;
+            z-index: 10;
+        }
+        
+        /* Filter buttons */
+        .filter-btn {
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn.active {
+            background: #FFD300;
+            color: #0a0a0a;
+            transform: scale(1.05);
+        }
+        
+        /* Masonry Grid */
+        .masonry-grid {
+            column-count: 3;
+            column-gap: 1.5rem;
+        }
+        
+        @media (max-width: 1024px) {
+            .masonry-grid {
+                column-count: 2;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .masonry-grid {
+                column-count: 1;
+            }
+        }
+        
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 1.5rem;
+        }
+    </style>
 </head>
-<body class="bg-dark text-white font-poppins">
+<body class="bg-dark text-white font-rajdhani">
     <!-- Navigation -->
-    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-black bg-opacity-95">
-        <div class="container mx-auto px-4 py-4">
-            <div class="flex justify-between items-center">
-                <div class="flex items-center space-x-2">
-                    <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-                        <i class="fas fa-robot text-dark text-xl"></i>
-                    </div>
-                    <span class="text-2xl font-orbitron font-bold">Passion<span class="text-primary">Bots</span></span>
+    <nav class="fixed w-full bg-dark/95 backdrop-blur-sm border-b border-gray-800 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center gap-3">
+                    <i class="fas fa-robot text-primary text-3xl"></i>
+                    <span class="font-orbitron text-2xl font-bold">Passion<span class="text-primary">Bots</span></span>
                 </div>
-                
-                <div class="hidden md:flex space-x-8">
-                    <a href="/" class="hover:text-primary transition">Home</a>
-                    <a href="/about" class="hover:text-primary transition">About</a>
-                    <a href="/products" class="hover:text-primary transition">Products</a>
-                    <a href="/courses" class="hover:text-primary transition">Courses</a>
-                    <a href="/gallery" class="text-primary">Gallery</a>
-                    <a href="/contact" class="hover:text-primary transition">Contact</a>
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="/" class="nav-link">Home</a>
+                    <a href="/static/pages/about.html" class="nav-link">About</a>
+                    <a href="/static/pages/products.html" class="nav-link">Products</a>
+                    <a href="/static/pages/courses.html" class="nav-link">Courses</a>
+                    <a href="/static/pages/gallery.html" class="nav-link text-primary">Gallery</a>
+                    <a href="/static/pages/contact.html" class="nav-link">Contact</a>
+                    <a href="/static/pages/login.html" class="btn-primary">Login</a>
                 </div>
-                
-                <div class="flex items-center space-x-4">
-                    <a href="/login" class="hidden md:block bg-primary text-dark px-6 py-2 rounded-full font-semibold hover:bg-yellow-400 transition">Login</a>
-                    <button id="mobile-menu-btn" class="md:hidden text-primary">
-                        <i class="fas fa-bars text-2xl"></i>
-                    </button>
-                </div>
-            </div>
-            
-            <!-- Mobile Menu -->
-            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
-                <div class="flex flex-col space-y-4">
-                    <a href="/" class="hover:text-primary transition">Home</a>
-                    <a href="/about" class="hover:text-primary transition">About</a>
-                    <a href="/products" class="hover:text-primary transition">Products</a>
-                    <a href="/courses" class="hover:text-primary transition">Courses</a>
-                    <a href="/gallery" class="text-primary">Gallery</a>
-                    <a href="/contact" class="hover:text-primary transition">Contact</a>
-                    <a href="/login" class="bg-primary text-dark px-6 py-2 rounded-full font-semibold text-center">Login</a>
-                </div>
+                <button class="md:hidden text-white">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative min-h-[50vh] flex items-center justify-center pt-24 pb-12">
-        <div class="absolute inset-0 bg-gradient-to-br from-dark via-gray-900 to-dark">
-            <div class="absolute inset-0 opacity-20">
-                <div class="grid-pattern"></div>
+    <section class="pt-32 pb-16 bg-gradient-to-br from-dark via-gray-900 to-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="inline-block px-4 py-2 bg-primary/20 rounded-full text-primary mb-6">
+                <i class="fas fa-images mr-2"></i>OUR JOURNEY
             </div>
-        </div>
-        
-        <div class="container mx-auto px-4 z-10 text-center">
-            <h1 class="text-4xl md:text-6xl font-orbitron font-bold mb-6">
-                Our <span class="text-primary">Gallery</span>
+            <h1 class="text-5xl md:text-6xl font-orbitron font-bold mb-6">
+                Explore Our <span class="text-primary">Journey</span>
             </h1>
-            <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
-                Explore our workshops, student projects, and robotics innovations
+            <p class="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
+                From workshops to competitions, events to achievements - witness the incredible journey of PassionBots and our community of innovators building the future of robotics and AI.
             </p>
         </div>
     </section>
 
+    <!-- Filter Buttons -->
+    <section class="py-8 bg-dark-secondary border-y border-gray-800 sticky top-20 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-wrap justify-center gap-4">
+                <button class="filter-btn active px-6 py-3 bg-gray-800 rounded-full font-semibold hover:bg-primary hover:text-dark transition-all" data-filter="all">
+                    <i class="fas fa-th mr-2"></i>All
+                </button>
+                <button class="filter-btn px-6 py-3 bg-gray-800 rounded-full font-semibold hover:bg-primary hover:text-dark transition-all" data-filter="events">
+                    <i class="fas fa-calendar-alt mr-2"></i>Events
+                </button>
+                <button class="filter-btn px-6 py-3 bg-gray-800 rounded-full font-semibold hover:bg-primary hover:text-dark transition-all" data-filter="workshops">
+                    <i class="fas fa-chalkboard-teacher mr-2"></i>Workshops
+                </button>
+                <button class="filter-btn px-6 py-3 bg-gray-800 rounded-full font-semibold hover:bg-primary hover:text-dark transition-all" data-filter="projects">
+                    <i class="fas fa-project-diagram mr-2"></i>Projects
+                </button>
+                <button class="filter-btn px-6 py-3 bg-gray-800 rounded-full font-semibold hover:bg-primary hover:text-dark transition-all" data-filter="team">
+                    <i class="fas fa-users mr-2"></i>Team
+                </button>
+                <button class="filter-btn px-6 py-3 bg-gray-800 rounded-full font-semibold hover:bg-primary hover:text-dark transition-all" data-filter="achievements">
+                    <i class="fas fa-trophy mr-2"></i>Achievements
+                </button>
+            </div>
+        </div>
+    </section>
+
     <!-- Gallery Grid -->
-    <section class="py-20">
-        <div class="container mx-auto px-4">
-            <div class="gallery-grid">
-                <div class="gallery-item border-2 border-gray-800">
-                    <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=600&h=400&fit=crop" alt="Workshop">
+    <section class="py-16 bg-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Stats -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+                <div class="text-center p-6 bg-dark-secondary rounded-xl border border-gray-800">
+                    <div class="text-4xl font-bold text-primary mb-2">50+</div>
+                    <div class="text-gray-400">Events Organized</div>
                 </div>
-                <div class="gallery-item border-2 border-gray-800">
-                    <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=600&h=400&fit=crop" alt="Student Project">
+                <div class="text-center p-6 bg-dark-secondary rounded-xl border border-gray-800">
+                    <div class="text-4xl font-bold text-primary mb-2">100+</div>
+                    <div class="text-gray-400">Workshops Conducted</div>
                 </div>
-                <div class="gallery-item border-2 border-gray-800">
-                    <img src="https://images.unsplash.com/photo-1563770660941-20978e870e26?w=600&h=400&fit=crop" alt="Robotics Lab">
+                <div class="text-center p-6 bg-dark-secondary rounded-xl border border-gray-800">
+                    <div class="text-4xl font-bold text-primary mb-2">500+</div>
+                    <div class="text-gray-400">Projects Built</div>
                 </div>
-                <div class="gallery-item border-2 border-gray-800">
-                    <img src="https://images.unsplash.com/photo-1581092918484-8313e1f7e6c2?w=600&h=400&fit=crop" alt="Robot Assembly">
+                <div class="text-center p-6 bg-dark-secondary rounded-xl border border-gray-800">
+                    <div class="text-4xl font-bold text-primary mb-2">5000+</div>
+                    <div class="text-gray-400">Students Trained</div>
                 </div>
-                <div class="gallery-item border-2 border-gray-800">
-                    <img src="https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?w=600&h=400&fit=crop" alt="Electronics Workshop">
+            </div>
+
+            <!-- Masonry Gallery -->
+            <div class="masonry-grid" id="gallery">
+                <!-- Gallery items will be loaded here -->
+            </div>
+
+            <!-- Empty State -->
+            <div id="empty-state" class="text-center py-20">
+                <i class="fas fa-images text-6xl text-gray-700 mb-6"></i>
+                <h3 class="text-2xl font-bold mb-4">Add Your Journey Images</h3>
+                <p class="text-gray-400 mb-6 max-w-2xl mx-auto">
+                    To populate this gallery with your Google Drive images:
+                    <br>1. Make images publicly accessible or download them
+                    <br>2. Upload to a CDN or use direct image URLs
+                    <br>3. Update the gallery data in the JavaScript section below
+                </p>
+                <a href="#instructions" class="btn-primary inline-block">
+                    <i class="fas fa-book mr-2"></i>View Instructions
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instructions Section -->
+    <section id="instructions" class="py-16 bg-dark-secondary">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-orbitron font-bold text-center mb-12">
+                <i class="fas fa-info-circle text-primary mr-3"></i>How to Add Your Images
+            </h2>
+            
+            <div class="space-y-6">
+                <div class="bg-dark p-6 rounded-xl border-2 border-gray-800">
+                    <div class="flex items-start gap-4">
+                        <div class="bg-primary text-dark w-8 h-8 rounded-full flex items-center justify-center font-bold flex-shrink-0">1</div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Download Images from Google Drive</h3>
+                            <p class="text-gray-400">Download all images from your Google Drive folder to your computer.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="gallery-item border-2 border-gray-800">
-                    <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=600&h=400&fit=crop" alt="3D Printing">
+
+                <div class="bg-dark p-6 rounded-xl border-2 border-gray-800">
+                    <div class="flex items-start gap-4">
+                        <div class="bg-primary text-dark w-8 h-8 rounded-full flex items-center justify-center font-bold flex-shrink-0">2</div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Upload to Image Hosting</h3>
+                            <p class="text-gray-400 mb-2">Upload images to one of these services:</p>
+                            <ul class="list-disc list-inside text-gray-400 space-y-1">
+                                <li><strong>Cloudflare R2</strong> (Recommended for this project)</li>
+                                <li><strong>Imgur</strong> - Free, simple image hosting</li>
+                                <li><strong>ImgBB</strong> - Free with direct links</li>
+                                <li><strong>GitHub</strong> - Store in repository assets folder</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                <div class="gallery-item border-2 border-gray-800">
-                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&h=400&fit=crop" alt="AI Lab">
+
+                <div class="bg-dark p-6 rounded-xl border-2 border-gray-800">
+                    <div class="flex items-start gap-4">
+                        <div class="bg-primary text-dark w-8 h-8 rounded-full flex items-center justify-center font-bold flex-shrink-0">3</div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Update Gallery Data</h3>
+                            <p class="text-gray-400 mb-3">Edit the <code class="bg-gray-800 px-2 py-1 rounded">galleryData</code> array in the JavaScript section below:</p>
+                            <pre class="bg-gray-900 p-4 rounded-lg overflow-x-auto text-sm"><code class="text-primary">const galleryData = [
+  {
+    id: 1,
+    image: 'YOUR_IMAGE_URL_HERE',
+    title: 'Robotics Workshop 2024',
+    description: 'Students building autonomous robots',
+    category: 'workshops',
+    date: '2024-01-15'
+  },
+  // Add more images...
+];</code></pre>
+                        </div>
+                    </div>
                 </div>
-                <div class="gallery-item border-2 border-gray-800">
-                    <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=600&h=400&fit=crop" alt="Training Session">
-                </div>
-                <div class="gallery-item border-2 border-gray-800">
-                    <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=600&h=400&fit=crop" alt="Drone Project">
+
+                <div class="bg-dark p-6 rounded-xl border-2 border-primary">
+                    <div class="flex items-start gap-4">
+                        <div class="bg-primary text-dark w-8 h-8 rounded-full flex items-center justify-center font-bold flex-shrink-0">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2 text-primary">Quick Alternative: Use Placeholder Service</h3>
+                            <p class="text-gray-400 mb-2">For testing, you can use placeholder images:</p>
+                            <ul class="list-disc list-inside text-gray-400 space-y-1">
+                                <li><code class="bg-gray-800 px-2 py-1 rounded">https://picsum.photos/800/600</code></li>
+                                <li><code class="bg-gray-800 px-2 py-1 rounded">https://source.unsplash.com/800x600/?robotics</code></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox">
+        <button class="absolute top-8 right-8 text-white text-4xl hover:text-primary transition-colors z-10" onclick="closeLightbox()">
+            <i class="fas fa-times"></i>
+        </button>
+        <button class="absolute left-8 top-1/2 -translate-y-1/2 text-white text-4xl hover:text-primary transition-colors" onclick="previousImage()">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="absolute right-8 top-1/2 -translate-y-1/2 text-white text-4xl hover:text-primary transition-colors" onclick="nextImage()">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+        <div class="lightbox-content">
+            <img id="lightbox-img" src="" alt="">
+            <div class="text-center mt-4">
+                <h3 id="lightbox-title" class="text-2xl font-bold mb-2"></h3>
+                <p id="lightbox-description" class="text-gray-400 mb-2"></p>
+                <p id="lightbox-date" class="text-sm text-gray-500"></p>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
-    <footer class="bg-black py-12 border-t-2 border-gray-900">
-        <div class="container mx-auto px-4">
+    <footer class="bg-dark border-t border-gray-800 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid md:grid-cols-4 gap-8 mb-8">
                 <div>
-                    <div class="flex items-center space-x-2 mb-4">
-                        <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-                            <i class="fas fa-robot text-dark text-xl"></i>
-                        </div>
-                        <span class="text-2xl font-orbitron font-bold">Passion<span class="text-primary">Bots</span></span>
+                    <div class="flex items-center gap-3 mb-4">
+                        <i class="fas fa-robot text-primary text-2xl"></i>
+                        <span class="font-orbitron text-xl font-bold">Passion<span class="text-primary">Bots</span></span>
                     </div>
-                    <p class="text-gray-400">Innovating the future with robotics and AI education</p>
+                    <p class="text-gray-400">Empowering the next generation of robotics and AI innovators through hands-on education and real-world projects.</p>
                 </div>
-                
                 <div>
-                    <h4 class="font-orbitron font-bold mb-4">Quick Links</h4>
-                    <div class="flex flex-col space-y-2">
-                        <a href="/about" class="text-gray-400 hover:text-primary transition">About Us</a>
-                        <a href="/products" class="text-gray-400 hover:text-primary transition">Products</a>
-                        <a href="/courses" class="text-gray-400 hover:text-primary transition">Courses</a>
-                        <a href="/gallery" class="text-gray-400 hover:text-primary transition">Gallery</a>
-                    </div>
+                    <h4 class="font-bold text-lg mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="/" class="hover:text-primary">Home</a></li>
+                        <li><a href="/static/pages/about.html" class="hover:text-primary">About Us</a></li>
+                        <li><a href="/static/pages/courses.html" class="hover:text-primary">All Courses</a></li>
+                        <li><a href="/static/pages/contact.html" class="hover:text-primary">Contact</a></li>
+                    </ul>
                 </div>
-                
                 <div>
-                    <h4 class="font-orbitron font-bold mb-4">Contact</h4>
-                    <div class="flex flex-col space-y-2 text-gray-400">
-                        <p><i class="fas fa-envelope text-primary mr-2"></i>info@passionbots.in</p>
-                        <p><i class="fas fa-phone text-primary mr-2"></i>+91 XXX XXX XXXX</p>
-                        <p><i class="fas fa-map-marker-alt text-primary mr-2"></i>India</p>
-                    </div>
+                    <h4 class="font-bold text-lg mb-4">Courses</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="/course/robotics-fundamentals" class="hover:text-primary">Robotics Fundamentals</a></li>
+                        <li><a href="/course/ai-machine-learning" class="hover:text-primary">AI & Machine Learning</a></li>
+                        <li><a href="/course/iot-development" class="hover:text-primary">IoT Development</a></li>
+                        <li><a href="/course/advanced-automation" class="hover:text-primary">Advanced Automation</a></li>
+                    </ul>
                 </div>
-                
                 <div>
-                    <h4 class="font-orbitron font-bold mb-4">Follow Us</h4>
-                    <div class="flex space-x-4">
-                        <a href="#" class="w-10 h-10 bg-primary bg-opacity-20 rounded-full flex items-center justify-center hover:bg-primary hover:text-dark transition">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 bg-primary bg-opacity-20 rounded-full flex items-center justify-center hover:bg-primary hover:text-dark transition">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 bg-primary bg-opacity-20 rounded-full flex items-center justify-center hover:bg-primary hover:text-dark transition">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 bg-primary bg-opacity-20 rounded-full flex items-center justify-center hover:bg-primary hover:text-dark transition">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                    </div>
+                    <h4 class="font-bold text-lg mb-4">Contact</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><i class="fas fa-envelope text-primary mr-2"></i>sales@passionbots.in</li>
+                        <li><i class="fas fa-phone text-primary mr-2"></i>+91 9137361474</li>
+                        <li><i class="fas fa-map-marker-alt text-primary mr-2"></i>Mumbai, India</li>
+                    </ul>
                 </div>
             </div>
-            
-            <div class="border-t border-gray-900 pt-8 text-center text-gray-400">
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
                 <p>&copy; 2024 PassionBots. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Floating Chat Button -->
-    <div class="fixed bottom-8 right-8 z-50">
-        <button class="w-16 h-16 bg-primary rounded-full shadow-lg flex items-center justify-center hover:bg-yellow-400 transition transform hover:scale-110 animate-pulse-slow">
-            <i class="fas fa-comment-dots text-dark text-2xl"></i>
-        </button>
-    </div>
-
     <script src="https://cdn.jsdelivr.net/npm/axios@1.6.0/dist/axios.min.js"></script>
-    <script src="/static/js/main.js"></script>
+    <script>
+        // ============================================
+        // GALLERY DATA - REPLACE WITH YOUR IMAGES
+        // ============================================
+        const galleryData = [
+            // EXAMPLE DATA - Replace these with your actual image URLs
+            {
+                id: 1,
+                image: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800',
+                title: 'Robotics Workshop',
+                description: 'Students learning robotics fundamentals',
+                category: 'workshops',
+                date: '2024-01-15'
+            },
+            {
+                id: 2,
+                image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800',
+                title: 'Tech Competition',
+                description: 'Annual robotics competition winners',
+                category: 'achievements',
+                date: '2024-02-20'
+            },
+            {
+                id: 3,
+                image: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800',
+                title: 'Arduino Projects',
+                description: 'Students showcasing their Arduino creations',
+                category: 'projects',
+                date: '2024-03-10'
+            },
+            {
+                id: 4,
+                image: 'https://images.unsplash.com/photo-1553406830-ef2513450d76?w=800',
+                title: 'Team Building Event',
+                description: 'PassionBots team celebrating success',
+                category: 'team',
+                date: '2024-04-05'
+            },
+            {
+                id: 5,
+                image: 'https://images.unsplash.com/photo-1558002038-1055907df827?w=800',
+                title: 'IoT Workshop',
+                description: 'Smart home automation training session',
+                category: 'workshops',
+                date: '2024-05-12'
+            },
+            {
+                id: 6,
+                image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800',
+                title: 'AI Hackathon',
+                description: 'Students competing in AI challenge',
+                category: 'events',
+                date: '2024-06-18'
+            },
+            // ADD MORE IMAGES HERE FROM YOUR GOOGLE DRIVE
+            // Copy the structure above and replace:
+            // - image: with your actual image URL
+            // - title: with descriptive title
+            // - description: what's happening in the image
+            // - category: workshops, events, projects, team, or achievements
+            // - date: when the photo was taken
+        ];
+
+        // ============================================
+        // GALLERY FUNCTIONALITY
+        // ============================================
+        let currentFilter = 'all';
+        let currentImageIndex = 0;
+        let filteredImages = [];
+
+        function renderGallery(filter = 'all') {
+            const gallery = document.getElementById('gallery');
+            const emptyState = document.getElementById('empty-state');
+            
+            filteredImages = filter === 'all' 
+                ? galleryData 
+                : galleryData.filter(item => item.category === filter);
+            
+            if (filteredImages.length === 0) {
+                gallery.innerHTML = '';
+                emptyState.style.display = 'block';
+                return;
+            }
+            
+            emptyState.style.display = 'none';
+            
+            gallery.innerHTML = filteredImages.map((item, index) => `
+                <div class="masonry-item gallery-item" data-category="${item.category}" onclick="openLightbox(${index})">
+                    <img src="${item.image}" alt="${item.title}" loading="lazy">
+                    <div class="gallery-overlay">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="px-3 py-1 bg-primary text-dark text-xs font-semibold rounded-full">
+                                ${item.category.toUpperCase()}
+                            </span>
+                            <span class="text-xs text-gray-400">
+                                <i class="far fa-calendar mr-1"></i>${item.date}
+                            </span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">${item.title}</h3>
+                        <p class="text-gray-300 text-sm">${item.description}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Filter functionality
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const filter = btn.dataset.filter;
+                currentFilter = filter;
+                
+                // Update active state
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                // Render filtered gallery
+                renderGallery(filter);
+            });
+        });
+
+        // Lightbox functionality
+        function openLightbox(index) {
+            currentImageIndex = index;
+            const item = filteredImages[index];
+            
+            document.getElementById('lightbox-img').src = item.image;
+            document.getElementById('lightbox-title').textContent = item.title;
+            document.getElementById('lightbox-description').textContent = item.description;
+            document.getElementById('lightbox-date').textContent = item.date;
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function nextImage() {
+            currentImageIndex = (currentImageIndex + 1) % filteredImages.length;
+            openLightbox(currentImageIndex);
+        }
+
+        function previousImage() {
+            currentImageIndex = (currentImageIndex - 1 + filteredImages.length) % filteredImages.length;
+            openLightbox(currentImageIndex);
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (!document.getElementById('lightbox').classList.contains('active')) return;
+            
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowRight') nextImage();
+            if (e.key === 'ArrowLeft') previousImage();
+        });
+
+        // Click outside to close
+        document.getElementById('lightbox').addEventListener('click', (e) => {
+            if (e.target.id === 'lightbox') closeLightbox();
+        });
+
+        // Initialize gallery
+        document.addEventListener('DOMContentLoaded', () => {
+            renderGallery();
+        });
+    </script>
 </body>
 </html>
